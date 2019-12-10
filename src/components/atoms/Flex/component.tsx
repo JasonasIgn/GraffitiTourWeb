@@ -14,9 +14,11 @@ export const Flex = ({
   margin = '0px',
   padding = '0px',
   position = 'static',
+  children,
   ...props
 }) => (
   <div {...props}>
+    {children}
     <style jsx>
       {`
         div {
