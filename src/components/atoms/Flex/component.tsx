@@ -9,10 +9,6 @@ export const Flex = ({
   grow = '0',
   shrink = '1',
   basis = 'auto',
-  height = 'auto',
-  width = 'auto',
-  margin = '0px',
-  padding = '0px',
   position = 'static',
   children,
   ...props
@@ -31,10 +27,6 @@ export const Flex = ({
           flex-grow: ${grow};
           flex-shrink: ${shrink};
           flex-basis: ${basis};
-          height: ${height};
-          width: ${width};
-          margin: ${margin};
-          padding: ${padding};
           position: ${position};
         }
       `}
