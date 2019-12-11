@@ -1,35 +1,51 @@
 import React from 'react'
-import Link from 'next/link'
 import { pages } from '../..'
-import { Image } from '../..'
+import { color } from '../../../theme'
+import { Image, Flex, Link } from '../..'
 import { images } from '../../../utils'
 
-const linkStyle = {
-  marginRight: 15,
-}
+const menuPages = [pages.register, pages.login]
 
 export const Header = () => (
   <header>
-    <Image src={images.logo} alt="logo" height="40px" width={undefined} />
-    <Link href={pages.homepage.path}>
-      <button type="button" style={linkStyle}>
-        {pages.homepage.title}
-      </button>
-    </Link>
-    <Link href={pages.login.path}>
-      <button type="button" style={linkStyle}>
-        {pages.login.title}
-      </button>
-    </Link>
-    <Link href={pages.register.path}>
-      <button type="button" style={linkStyle}>
-        {pages.register.title}
-      </button>
-    </Link>
+    <div className="header-content">
+      <Link href={pages.homepage.path} className="header-logo">
+        <Image src={images.logo} height="40px" alt="logo" />
+      </Link>
+      <Flex>
+        {menuPages.map(page => (
+          <Link href={page.path} className="header-link">
+            {page.title}
+          </Link>
+        ))}
+      </Flex>
+    </div>
     <style jsx>
       {`
         header {
           display: flex;
+          height: 50px;
+          width: 100%;
+          justify-content: center;
+        }
+        .header-content {
+          display: flex;
+          width: 100%;
+          max-width: 1440px;
+          background-color: ${color('blue', 200)};
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+        }
+      `}
+    </style>
+    <style jsx global>
+      {`
+        .header-link {
+          margin-left: 15px;
+        }
+        .header-logo {
+          height: 40px;
         }
       `}
     </style>
