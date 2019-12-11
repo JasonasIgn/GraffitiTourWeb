@@ -1,16 +1,17 @@
 import React from 'react'
+import { color } from '../../../theme'
 import { Flex } from '..'
 
-export const InputComponent = ({
+export const Input = ({
   children,
-  error,
+  error = '',
   field,
   form,
   type,
-  label,
+  label = '',
   ...props
 }) => (
-  <Flex position="relative" alignItems="center">
+  <Flex position="relative" direction="column">
     <label>{label}</label>
     {React.createElement(type === 'textarea' ? 'textarea' : 'input', {
       ...field,
@@ -18,20 +19,22 @@ export const InputComponent = ({
       type,
       title: label,
     })}
-    <style jsx>
+    <style global jsx>
       {`
         input {
-          resize: 'none';
-          width: '100%';
+          resize: none;
+          width: 100%;
           outline: none;
-          height: ${type === 'textarea' ? 'auto' : '54px'};
-          backgroundcolor: grey;
-          color: lightgrey;
-          paddingleft: 20px;
-          paddingright: 20px;
-          paddingtop: 16px;
-          paddingbottom: 8px;
-          fontsize: 14px;
+          box-sizing: border-box;
+          height: ${type === 'textarea' ? 'auto' : '40px'};
+          background-color: ${color('light', 100)};
+          color: black;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          border-radius: 4px;
+          font-size: 14px;
           border: 1px solid
             ${form && form.errors[field.name] && form.touched[field.name]
               ? 'red'
@@ -40,7 +43,7 @@ export const InputComponent = ({
         label {
           display: block;
           color: black;
-          fontsize: 14px;
+          font-size: 18px;
           pointerevents: none;
         }
       `}
