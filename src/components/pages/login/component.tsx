@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { pages } from '..'
-import { LoginFormContainer } from '../../organisms'
+import { LoginFormContainer } from '../..'
 import { UserState } from '../../../store/users/types'
 
-interface LoginPageProps { set: Function; userState: UserState }
+interface LoginPageProps {
+  set: Function
+  userState: UserState
+}
 
 export class LoginComponent extends Component<LoginPageProps, {}> {
   // static getInitialProps = async ({ isServer }) => {
@@ -18,11 +20,10 @@ export class LoginComponent extends Component<LoginPageProps, {}> {
     const { userState } = this.props
     console.log(this.props)
     return (
-      <div>
-        <h1>{pages.login.title}</h1>
+      <React.Fragment>
         <h1>{userState.username}</h1>
         <LoginFormContainer />
-      </div>
+      </React.Fragment>
     )
   }
 }

@@ -1,16 +1,29 @@
 import React from 'react'
-import { Form, Field, ErrorMessage } from 'formik'
+import { Form, ErrorMessage } from 'formik'
+import { FormField, Button } from '../..'
 
 export const LoginForm = () => {
   return (
-    <Form>
-      <label>username</label>
-      <Field name="username" />
-      <ErrorMessage name="username" />
-      <label>password</label>
-      <Field name="password" />
-      <ErrorMessage name="password" />
-      <button type="submit"> Login </button>
-    </Form>
+    <div className="login-form-wrapper" >
+      <h1>Login</h1>
+      <Form className="login-form">
+        <FormField name="username" label="Username" />
+        <FormField name="password" label="Password" />
+        <Button type="button"> Login </Button>
+      </Form>
+      <style jsx>
+        {`
+          .login-form-wrapper {
+            max-width: 340px;
+            width: 100%;
+            margin-top: 40px;
+          }
+
+          h1 {
+            text-align: center;
+          }
+        `}
+      </style>
+    </div>
   )
 }
