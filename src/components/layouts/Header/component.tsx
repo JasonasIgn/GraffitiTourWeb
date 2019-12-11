@@ -1,13 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import { pages } from '../..'
+import { Flex, Image } from '../..'
+import { images } from '../../../utils'
 
 const linkStyle = {
   marginRight: 15,
 }
 
 export const Header = () => (
-  <div>
+  <Flex>
+    <Image src={images.logo} alt="logo" height="40px" width={undefined} />
     <Link href={pages.homepage.path}>
       <button type="button" style={linkStyle}>
         {pages.homepage.title}
@@ -23,5 +26,5 @@ export const Header = () => (
         {pages.register.title}
       </button>
     </Link>
-  </div>
+  </Flex>
 )
