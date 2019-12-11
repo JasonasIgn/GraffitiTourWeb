@@ -20,7 +20,7 @@ export const InputComponent = ({
     })}
     <style jsx>
       {`
-        input: {
+        input {
           resize: 'none';
           width: '100%';
           outline: none;
@@ -37,7 +37,7 @@ export const InputComponent = ({
               ? 'red'
               : 'transparent'};
         }
-        label: {
+        label {
           display: block;
           color: black;
           fontsize: 14px;

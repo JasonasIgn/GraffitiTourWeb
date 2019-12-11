@@ -22,6 +22,7 @@ export const Flex = ({
     <style jsx>
       {`
         div {
+          display: flex;
           flex-direction: ${direction};
           flex-wrap: ${wrap};
           align-items: ${alignItems};
