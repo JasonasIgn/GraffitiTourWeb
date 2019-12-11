@@ -14,7 +14,7 @@ export const Header = () => (
       </Link>
       <Flex>
         {menuPages.map(page => (
-          <Link href={page.path} className="header-link">
+          <Link key={page.path} href={page.path} className="header-link">
             {page.title}
           </Link>
         ))}
@@ -24,7 +24,7 @@ export const Header = () => (
       {`
         header {
           display: flex;
-          height: 50px;
+          height: 60px;
           width: 100%;
           justify-content: center;
         }
@@ -43,6 +43,7 @@ export const Header = () => (
       {`
         .header-link {
           margin-left: 15px;
+          color: ${color('light', 100)};
         }
         .header-logo {
           height: 40px;

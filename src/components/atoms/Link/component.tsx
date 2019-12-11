@@ -9,7 +9,6 @@ export const Link = ({ href, children, className = '' }) => (
       <style jsx>{`
         a {
           text-decoration: none;
-          color: ${color('dark', 600)};
           font-weight: 600;
         }
       `}</style>
