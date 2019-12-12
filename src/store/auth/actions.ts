@@ -1,14 +1,14 @@
-import { AuthActionTypes } from './types'
+import { AuthActionTypes, LoginData, AuthPayload, FieldError } from './types'
 
-export const loginRequest = payload => ({
+export const loginRequest = (payload: LoginData) => ({
   type: AuthActionTypes.LOGIN_REQUEST,
   payload,
 })
-export const loginRequestSuccess = data => ({
+export const loginRequestSuccess = (data: AuthPayload) => ({
   type: AuthActionTypes.LOGIN_SUCCESS,
-  data: data
+  data: data,
 })
-export const loginRequestFailure = (error: String) => ({
+export const loginRequestFailure = (errors: FieldError[]) => ({
   type: AuthActionTypes.LOGIN_FAILURE,
-  error,
+  errors,
 })
