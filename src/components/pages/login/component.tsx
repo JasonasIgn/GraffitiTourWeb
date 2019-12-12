@@ -16,11 +16,11 @@ export class LoginComponent extends Component<LoginPageProps> {
   // }
 
   render() {
-    const { userState } = this.props
+    // const { userState } = this.props
     console.log(this.props)
     return (
       <React.Fragment>
-        <h1>{userState.username}</h1>
+        {/* <h1>{userState.username}</h1> */}
         <LoginFormContainer />
       </React.Fragment>
     )
