@@ -19,7 +19,9 @@ export async function api(method, path, data) {
     },
     body: JSON.stringify(data),
   })
-  return res.json()
-  // .then(res => res.json())
-  // .catch(err => ezr)
+  if (res.ok) {
+    return res.json()
+  } else {
+    throw res.json()
+  }
 }
