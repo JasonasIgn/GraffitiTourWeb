@@ -4,26 +4,24 @@ export enum AuthActionTypes {
   LOGIN_FAILURE = '@@auth/LOGIN_FAILURE',
 }
 
-interface LoginData {
-  username: String,
-  password: String
+export interface LoginData {
+  username: string
+  password: string
 }
 
-interface LoginRequestAction {
-  type: typeof AuthActionTypes.LOGIN_REQUEST
-  payload: LoginData
+export interface AuthPayload {
+  token?: string
+  refreshToken?: string
+  type?: string
 }
 
-interface LoginRequestSuccessAction {
-  type: typeof AuthActionTypes.LOGIN_SUCCESS
+export interface FieldError {
+  field: string,
+  message: string,
 }
 
-interface LoginRequestFailureAction {
-  type: typeof AuthActionTypes.LOGIN_FAILURE
-  error: String
+export interface LoginState {
+  readonly loading: boolean
+  readonly data: AuthPayload
+  readonly errors?: FieldError[]
 }
-
-export type AuthActionsType =
-  | LoginRequestAction
-  | LoginRequestFailureAction
-  | LoginRequestSuccessAction
