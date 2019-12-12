@@ -19,7 +19,7 @@ interface PropsFromState {
 type AllProps = PropsFromState & PropsFromDispatch
 
 const initialValues = {
-  username: '',
+  email: '',
   password: '',
 }
 
@@ -45,9 +45,9 @@ const mapStateToProps = ({ login }: ApplicationState) => ({
   errors: login.errors,
 })
 
-const mapDispatchToProps = {
-  loginRequest,
-}
+const mapDispatchToProps = dispatch => ({
+  loginRequest: loginData => dispatch(loginRequest(loginData)),
+})
 
 export const LoginFormContainer = connect(
   mapStateToProps,
