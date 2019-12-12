@@ -1,9 +1,9 @@
 export default {
-  apiUrl: 'localhost:8080',
+  apiUrl: 'http://localhost:8080',
   apiMethods: {
-    GET: 'GET',
-    POST: 'POST',
-    PUT: 'PUT',
-    DELETE: 'DELETE',
+    GET: 'get',
+    POST: 'post',
+    PUT: 'put',
+    DELETE: 'delete',
   },
 }
