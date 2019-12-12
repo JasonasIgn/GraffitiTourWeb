@@ -1,8 +1,8 @@
 import { AuthActionTypes, LoginData, AuthPayload, FieldError } from './types'
 
-export const loginRequest = (payload: LoginData) => ({
+export const loginRequest = (data: LoginData) => ({
   type: AuthActionTypes.LOGIN_REQUEST,
-  payload,
+  data: data,
 })
 export const loginRequestSuccess = (data: AuthPayload) => ({
   type: AuthActionTypes.LOGIN_SUCCESS,

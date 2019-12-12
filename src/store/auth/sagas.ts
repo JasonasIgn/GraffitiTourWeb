@@ -1,4 +1,4 @@
-import { put, call, takeEvery } from 'redux-saga/effects'
+import { put, call, takeEvery, take } from 'redux-saga/effects'
 import * as actions from './actions'
 import { api } from '../../utils/api'
 import config from '../../config'
@@ -15,10 +15,11 @@ export function* loginRequest(data) {
   }
 }
 
-export function* watchLoginRequest(data) {
+export function* watchLoginRequest() {
+  const { data } = yield take(AuthActionTypes.LOGIN_REQUEST)
   yield call(loginRequest, data)
 }
 
-export default function*(data) {
-  yield takeEvery(AuthActionTypes.LOGIN_REQUEST, watchLoginRequest, data)
+export default function*() {
+  yield takeEvery(AuthActionTypes.LOGIN_REQUEST, watchLoginRequest)
 }

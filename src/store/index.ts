@@ -17,6 +17,6 @@ export const rootReducer = combineReducers({
 
 const sagas = [authSaga]
 
-export function* rootSaga(services = {}) {
-  yield all(sagas.map(saga => fork(saga, services)))
+export function* rootSaga() {
+  yield all(sagas.map(saga => fork(saga)))
 }
