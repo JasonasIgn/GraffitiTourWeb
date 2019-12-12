@@ -9,7 +9,7 @@ export const LoginForm = () => {
       <Form className="login-form">
         <FormField name="username" label="Username" />
         <FormField name="password" label="Password" />
-        <Button type="button"> Login </Button>
+        <Button type="submit"> Login </Button>
       </Form>
       <style jsx>
         {`
