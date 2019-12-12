@@ -8,13 +8,16 @@ export function authHeader() {
   }
 }
 
-export const fetch = (url, method, data) =>
-  fetch(url, method, {
+export async function api(method, url, data) {
+  const res = await fetch(url, {
+    method,
     headers: {
       'Content-Type': 'application/json',
       ...authHeader(),
     },
     body: JSON.stringify(data),
   })
-    .then(res => res.json())
-    .catch(err => err)
+  return res.json()
+    // .then(res => res.json())
+    // .catch(err => ezr)
+}
