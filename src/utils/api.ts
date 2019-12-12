@@ -1,3 +1,5 @@
+import config from '../config'
+
 export function authHeader() {
   const token = localStorage.getItem('token')
 
@@ -8,8 +10,8 @@ export function authHeader() {
   }
 }
 
-export async function api(method, url, data) {
-  const res = await fetch(url, {
+export async function api(method, path, data) {
+  const res = await fetch(`${config.apiUrl}/${path}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
@@ -18,6 +20,6 @@ export async function api(method, url, data) {
     body: JSON.stringify(data),
   })
   return res.json()
-    // .then(res => res.json())
-    // .catch(err => ezr)
+  // .then(res => res.json())
+  // .catch(err => ezr)
 }

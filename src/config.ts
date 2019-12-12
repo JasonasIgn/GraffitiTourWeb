@@ -1,6 +1,6 @@
 export default {
-  backendUrl: 'localhost:8080/api',
-  fetchMethods: {
+  apiUrl: 'localhost:8080',
+  apiMethods: {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
