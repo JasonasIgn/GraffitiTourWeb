@@ -3,11 +3,10 @@ import { LoginFormContainer } from '../..'
 import { UserState } from '../../../store/users/types'
 
 interface LoginPageProps {
-  set: Function
   userState: UserState
 }
 
-export class LoginComponent extends Component<LoginPageProps, {}> {
+export class LoginComponent extends Component<LoginPageProps> {
   // static getInitialProps = async ({ isServer }) => {
   //   const user = await fetch(
   //     'https://jsonplaceholder.typicode.com/todos/1',
