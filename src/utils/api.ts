@@ -10,14 +10,14 @@ export function authHeader() {
   }
 }
 
-export async function api(method, path, data) {
+export async function api(method, path, data = null) {
   const res = await fetch(`${config.apiUrl}/${path}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
       ...authHeader(),
     },
-    body: JSON.stringify(data),
+    body: data && JSON.stringify(data),
   })
   if (res.ok) {
     return res.json()

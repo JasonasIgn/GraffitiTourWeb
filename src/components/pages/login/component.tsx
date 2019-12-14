@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { LoginFormContainer } from '../..'
-import { UserState } from '../../../store/users/types'
+// import { UserState } from '../../../store/users/types'
 
-interface LoginPageProps {
-  userState: UserState
-}
+// interface LoginPageProps {
+//   userState: UserState
+// }
 
-export class LoginComponent extends Component<LoginPageProps> {
+export const LoginComponent = () => (
   // static getInitialProps = async ({ isServer }) => {
   //   const user = await fetch(
   //     'https://jsonplaceholder.typicode.com/todos/1',
@@ -15,14 +15,8 @@ export class LoginComponent extends Component<LoginPageProps> {
   //   return { isServer, user }
   // }
 
-  render() {
-    // const { userState } = this.props
-    console.log(this.props)
-    return (
-      <React.Fragment>
-        {/* <h1>{userState.username}</h1> */}
-        <LoginFormContainer />
-      </React.Fragment>
-    )
-  }
-}
+  // const { userState } = this.props
+  <React.Fragment>
+    <LoginFormContainer />
+  </React.Fragment>
+)

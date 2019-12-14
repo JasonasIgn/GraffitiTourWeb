@@ -1,3 +1,5 @@
+import { FieldError } from '../general/types'
+
 export enum AuthActionTypes {
   LOGIN_REQUEST = '@@auth/LOGIN_REQUEST',
   LOGIN_SUCCESS = '@@auth/LOGIN_SUCCESS',
@@ -13,11 +15,6 @@ export interface AuthPayload {
   token?: string
   refreshToken?: string
   type?: string
-}
-
-export interface FieldError {
-  field: string,
-  message: string,
 }
 
 export interface LoginState {

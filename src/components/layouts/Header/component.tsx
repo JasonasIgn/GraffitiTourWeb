@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { pages } from '../..'
 import { color } from '../../../theme'
 import { Image, Flex, Link } from '../..'
+import { ProfileData } from '../../../store/users/types'
 import { images } from '../../../utils'
+
+interface HeaderProps {
+  profile: ProfileData
+}
 
 const menuPages = [pages.register, pages.login]
 
-export const Header = () => (
+export const HeaderComponent: FunctionComponent<HeaderProps> = ({ profile }) => (
   <header>
     <div className="header-content">
       <Link href={pages.homepage.path} className="header-logo">
         <Image src={images.logo} height="40px" alt="logo" />
       </Link>
       <Flex>
-        {menuPages.map(page => (
-          <Link key={page.path} href={page.path} className="header-link">
-            {page.title}
-          </Link>
-        ))}
+        {profile.username ? <span>Welcome, {profile.username}</span> :
+          menuPages.map(page => (
+            <Link key={page.path} href={page.path} className="header-link">
+              {page.title}
+            </Link>
+          ))
+        }
       </Flex>
     </div>
     <style jsx>

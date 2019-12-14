@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'formik'
 import { FormField, Button, ErrorMessage } from '../..'
-import { FieldError } from '../../../store/auth/types'
+import { FieldError } from '../../../store/general/types'
 import { getError } from '../../../utils'
 
 interface LoginFormProps {

@@ -3,7 +3,8 @@ import { Formik } from 'formik'
 import { connect } from 'react-redux'
 import { LoginForm } from '.'
 import { loginRequest } from '../../../store/auth/actions'
-import { FieldError, AuthPayload } from '../../../store/auth/types'
+import { AuthPayload } from '../../../store/auth/types'
+import { FieldError } from '../../../store/general/types'
 import { ApplicationState } from '../../../store'
 
 interface PropsFromDispatch {

@@ -1,4 +1,4 @@
-import { FieldError } from '../store/auth/types'
+import { FieldError } from '../store/general/types'
 
 export const getError = (errors: FieldError[]): string => {
   if (errors && errors.length > 0) {

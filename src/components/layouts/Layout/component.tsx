@@ -2,7 +2,7 @@ import React from 'react'
 import { Header } from '..'
 import { Flex } from '../../atoms'
 
-export const Layout = ({ children }) => (
+export const LayoutComponent = ({ children }) => (
   <div>
     <Header />
     <Flex justifyContent="center" grow="1" className="content-container">
