@@ -14,9 +14,7 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           autoWidth={false}
           display={<span>Welcome, {profile.username}</span>}>
           <div className="dropDownItemsContentWrapper">
-            <span
-              className="dropDownItem"
-              onClick={() => logoutRequest()}>
+            <span className="dropDownItem" onClick={() => logoutRequest()}>
               <span className="logoutText">Log out</span>
             </span>
           </div>
