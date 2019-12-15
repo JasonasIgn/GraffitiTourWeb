@@ -11,4 +11,8 @@ export const pages = {
     path: '/register',
     title: 'Register',
   },
+  about: {
+    path: '/about',
+    title: 'About',
+  },
 }
