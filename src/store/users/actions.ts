@@ -12,3 +12,14 @@ export const profileRequestFailure = (errors: FieldError[]) => ({
   type: UserActionTypes.PROFILE_FAILURE,
   errors,
 })
+
+export const logoutRequest = () => ({
+  type: UserActionTypes.LOGOUT_REQUEST,
+})
+export const logoutRequestSuccess = () => ({
+  type: UserActionTypes.LOGOUT_SUCCESS,
+})
+export const logoutRequestFailure = (errors: FieldError[]) => ({
+  type: UserActionTypes.LOGOUT_FAILURE,
+  errors,
+})

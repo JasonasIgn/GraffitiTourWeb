@@ -2,24 +2,17 @@ import React, { FunctionComponent } from 'react'
 import { pages } from '../..'
 import { color } from '../../../theme'
 import { Image, Flex, Link } from '../..'
-import { ProfileData } from '../../../store/users/types'
 import { images } from '../../../utils'
 import { HeaderMenu } from '../../molecules'
 
-interface HeaderProps {
-  profile: ProfileData
-}
-
-export const HeaderComponent: FunctionComponent<HeaderProps> = ({
-  profile,
-}) => (
+export const Header = () => (
   <header>
     <div className="header-content">
       <Link href={pages.homepage.path} className="header-logo">
         <Image src={images.logo} height="40px" alt="logo" />
       </Link>
       <Flex>
-        <HeaderMenu profile={profile} />
+        <HeaderMenu />
       </Flex>
     </div>
     <style jsx>

@@ -4,7 +4,6 @@ import { Flex } from '../..'
 
 export const DropDown = ({ closeOnClick, display, children, autoWidth }) => {
   const [opened, setOpened] = useState(false)
-  console.log(opened)
 
   useEffect(() => {
     if (closeOnClick) {

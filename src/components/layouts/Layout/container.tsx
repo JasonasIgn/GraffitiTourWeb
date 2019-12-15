@@ -5,29 +5,28 @@ import { ApplicationState } from '../../../store'
 import { profileRequest } from '../../../store/users/actions'
 import { isUserActive } from '../../../utils/localStorage'
 
-export const LayoutComponentContainer = ({ children, profile, profileRequest }) => {
-    useEffect(() => {
-        if (isUserActive() && !profile.username) {
-            profileRequest()
-        }
-
-    }, [])
-    console.log(profile)
-    return (
-        <LayoutComponent>{children}</LayoutComponent>
-    )
+export const LayoutComponentContainer = ({
+  children,
+  profile,
+  profileRequest,
+}) => {
+  useEffect(() => {
+    if (isUserActive() && !profile.username) {
+      profileRequest()
+    }
+  }, [])
+  return <LayoutComponent>{children}</LayoutComponent>
 }
 
-
 const mapStateToProps = ({ users }: ApplicationState) => ({
-    profile: users.profile,
+  profile: users.profile,
 })
 
 const mapDispatchToProps = {
-    profileRequest,
+  profileRequest,
 }
 
 export const Layout = connect(
-    mapStateToProps,
-    mapDispatchToProps,
+  mapStateToProps,
+  mapDispatchToProps,
 )(LayoutComponentContainer)

@@ -1,13 +1,11 @@
 import React from 'react'
 import { color, media } from '../../../theme'
 import { Link, DropDown } from '../..'
-import { isUserActive } from '../../../utils'
 import { pages } from '../../pages'
 
 const menuPages = [pages.register, pages.login]
 
-export const HeaderMenu = ({ profile }) => {
-  console.log(profile, 'CIA')
+export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
   return (
     <div className="userMenu">
       {profile.username ? (
@@ -18,9 +16,7 @@ export const HeaderMenu = ({ profile }) => {
           <div className="dropDownItemsContentWrapper">
             <span
               className="dropDownItem"
-              onClick={() => {
-                console.log('log out')
-              }}>
+              onClick={() => logoutRequest()}>
               <span className="logoutText">Log out</span>
             </span>
           </div>
