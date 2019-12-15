@@ -1,4 +1,4 @@
-import { put, call, takeEvery } from 'redux-saga/effects'
+import { put, call, takeEvery, take } from 'redux-saga/effects'
 import Router from 'next/router'
 import * as actions from './actions'
 import { api } from '../../utils/api'
@@ -17,10 +17,6 @@ export function* profileRequest() {
   }
 }
 
-export function* watchProfileRequest() {
-  yield call(profileRequest)
-}
-
 export function* logoutRequest() {
   try {
     yield call(api, config.apiMethods.POST, 'logout')
@@ -33,11 +29,32 @@ export function* logoutRequest() {
   }
 }
 
+export function* registerRequest(data) {
+  try {
+    yield call(api, config.apiMethods.POST, 'users', data)
+    Router.push(pages.login.path)
+    yield put(actions.registerRequestSuccess())
+  } catch (e) {
+    const errors = yield e
+    yield put(actions.registerRequestFailure(errors))
+  }
+}
+
 export function* watchLogoutRequest() {
   yield call(logoutRequest)
+}
+
+export function* watchProfileRequest() {
+  yield call(profileRequest)
+}
+
+export function* watchRegisterRequest() {
+const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
+yield call(registerRequest, data)
 }
 
 export default function*() {
   yield takeEvery(UserActionTypes.PROFILE_REQUEST, watchProfileRequest)
   yield takeEvery(UserActionTypes.LOGOUT_REQUEST, watchLogoutRequest)
+  yield takeEvery(UserActionTypes.REGISTER_REQUEST, watchRegisterRequest)
 }

@@ -1,8 +1,4 @@
 import React from 'react'
-import { pages } from '..'
+import { RegisterFormContainer } from '../../organisms'
 
-export const RegisterComponent = () => (
-  <div>
-    <h1>{pages.register.title}</h1>
-  </div>
-)
+export const RegisterPage = () => <RegisterFormContainer />
