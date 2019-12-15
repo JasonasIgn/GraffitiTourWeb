@@ -6,7 +6,7 @@ import { LoginFormContainer } from '../..'
 //   userState: UserState
 // }
 
-export const LoginComponent = () => (
+export const LoginPage = () => (
   // static getInitialProps = async ({ isServer }) => {
   //   const user = await fetch(
   //     'https://jsonplaceholder.typicode.com/todos/1',
@@ -16,7 +16,5 @@ export const LoginComponent = () => (
   // }
 
   // const { userState } = this.props
-  <React.Fragment>
-    <LoginFormContainer />
-  </React.Fragment>
+  <LoginFormContainer />
 )
