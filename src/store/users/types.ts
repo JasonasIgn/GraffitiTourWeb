@@ -31,6 +31,3 @@ export interface UsersState {
   register: RegisterState
   profile: ProfileData
 }
-
-
-
