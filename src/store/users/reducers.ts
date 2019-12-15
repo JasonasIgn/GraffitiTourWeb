@@ -1,14 +1,25 @@
-import { LOGIN_REQUEST, UserActionsType, LOGIN_SUCCESS, LOGIN_FAILURE } from './types'
+import { UserActionTypes, UsersState } from './types'
 
-export const userReducer = (userState = {}, action: UserActionsType) => {
+export const initialState: UsersState = {
+  profile: {
+    username: '',
+    email: '',
+  },
+}
+
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
-      return action.user
-    case LOGIN_SUCCESS:
-      return action.user
-    case LOGIN_FAILURE:
-      return {}
+    case UserActionTypes.PROFILE_SUCCESS:
+      return {
+        ...state,
+        profile: { username: action.profile.username, email: action.profile.email },
+      }
+    case UserActionTypes.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        profile: initialState.profile,
+      }
     default:
-      return userState
+      return state
   }
 }

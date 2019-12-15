@@ -1,21 +1,26 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Header } from '..'
+import { Flex } from '../../atoms'
 
-const layoutStyle = {
-  minHeight: '100vh',
-  width: '100%',
-}
-
-export const Layout = ({ children }) => (
-  <div style={layoutStyle}>
+export const LayoutComponent = ({ children }) => (
+  <div>
     <Header />
-    {children}
+    <Flex justifyContent="center" grow="1" className="content-container">
+      {children}
+    </Flex>
+    <style jsx>{`
+      div {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    `}</style>
+    <style jsx global>{`
+      .content-container {
+        padding: 0 20px;
+      }
+    `}</style>
   </div>
 )
-
-const proptypes = {
-  children: PropTypes.node,
-}
-
-Layout.propTypes = proptypes

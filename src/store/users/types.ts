@@ -1,28 +1,15 @@
-export const LOGIN_REQUEST = 'LOGIN_REQUEST'
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const LOGIN_FAILURE = 'LOGIN_FAILURE'
-
-interface LoginRequestAction {
-  type: typeof LOGIN_REQUEST
-  user: UserState
+export enum UserActionTypes {
+  PROFILE_REQUEST = '@@users/PROFILE_REQUEST',
+  PROFILE_SUCCESS = '@@users/PROFILE_SUCCESS',
+  PROFILE_FAILURE = '@@users/PROFILE_FAILURE',
+  LOGOUT_REQUEST = '@@users/LOGOUT_REQUEST',
+  LOGOUT_SUCCESS = '@@users/LOGOUT_SUCCESS',
+  LOGOUT_FAILURE = '@@users/LOGOUT_FAILURE',
 }
-
-interface LoginRequestSuccessAction {
-  type: typeof LOGIN_SUCCESS
-  user: UserState
+export interface ProfileData {
+  username: string
+  email: string
 }
-
-interface LoginRequestFailureAction {
-  type: typeof LOGIN_FAILURE
-  error: String
+export interface UsersState {
+  profile: ProfileData
 }
-
-export interface UserState {
-  username: String
-  loggedIn: Boolean
-}
-
-export type UserActionsType =
-  | LoginRequestAction
-  | LoginRequestFailureAction
-  | LoginRequestSuccessAction

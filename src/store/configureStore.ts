@@ -1,16 +1,17 @@
-import { createStore } from 'redux'
-import rootReducer from '.'
+import { Store, createStore, applyMiddleware, DeepPartial } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { rootReducer, rootSaga, ApplicationState } from '.'
 
-const configureStore = preloadedState => {
-  const store = createStore(rootReducer, preloadedState)
-
-  if (module.hot) {
-    module.hot.accept('.', () => {
-      store.replaceReducer(rootReducer)
-    })
-  }
+export default function configureStore(
+  initialState: DeepPartial<ApplicationState>,
+): Store<ApplicationState> {
+  const sagaMiddleware = createSagaMiddleware()
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(sagaMiddleware),
+  )
+  sagaMiddleware.run(rootSaga)
 
   return store
 }
-
-export default configureStore

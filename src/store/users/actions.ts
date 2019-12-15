@@ -1,35 +1,25 @@
-import {
-  UserActionsType,
-  LOGIN_REQUEST,
-  UserState,
-  LOGIN_FAILURE,
-  LOGIN_SUCCESS,
-} from './types'
-import { userService } from '../../utils/services/user'
+import { UserActionTypes, ProfileData } from './types'
+import { FieldError } from '../general/types'
 
-export const login = (username: String, password: String) => {
-  return dispatch => {
-    dispatch(request({ username: username, loggedIn: false }))
-    userService.login(username, password).then(
-      user => {
-        dispatch(success(user))
-      },
-      error => {
-        dispatch(failure(error.toString()))
-      },
-    )
-  }
+export const profileRequest = () => ({
+  type: UserActionTypes.PROFILE_REQUEST,
+})
+export const profileRequestSuccess = (data: ProfileData) => ({
+  type: UserActionTypes.PROFILE_SUCCESS,
+  profile: data,
+})
+export const profileRequestFailure = (errors: FieldError[]) => ({
+  type: UserActionTypes.PROFILE_FAILURE,
+  errors,
+})
 
-  const request = (user: UserState): UserActionsType => ({
-    type: LOGIN_REQUEST,
-    user,
-  })
-  const success = (user: UserState): UserActionsType => ({
-    type: LOGIN_SUCCESS,
-    user,
-  })
-  const failure = (error: String): UserActionsType => ({
-    type: LOGIN_FAILURE,
-    error,
-  })
-}
+export const logoutRequest = () => ({
+  type: UserActionTypes.LOGOUT_REQUEST,
+})
+export const logoutRequestSuccess = () => ({
+  type: UserActionTypes.LOGOUT_SUCCESS,
+})
+export const logoutRequestFailure = (errors: FieldError[]) => ({
+  type: UserActionTypes.LOGOUT_FAILURE,
+  errors,
+})

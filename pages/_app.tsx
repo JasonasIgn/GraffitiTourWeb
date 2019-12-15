@@ -7,7 +7,7 @@ import { Layout } from '../src/components'
 import { Store } from 'redux'
 
 interface MyAppProps {
-  store: Store,
+  store: Store
 }
 
 /**
@@ -35,6 +35,13 @@ class MyApp extends App<MyAppProps, {}, {}> {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        <style jsx global>
+          {`
+            body {
+              margin: 0px;
+            }
+          `}
+        </style>
       </Provider>
     )
   }
