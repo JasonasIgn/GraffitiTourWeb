@@ -4,27 +4,22 @@ import { color } from '../../../theme'
 import { Image, Flex, Link } from '../..'
 import { ProfileData } from '../../../store/users/types'
 import { images } from '../../../utils'
+import { HeaderMenu } from '../../molecules'
 
 interface HeaderProps {
   profile: ProfileData
 }
 
-const menuPages = [pages.register, pages.login]
-
-export const HeaderComponent: FunctionComponent<HeaderProps> = ({ profile }) => (
+export const HeaderComponent: FunctionComponent<HeaderProps> = ({
+  profile,
+}) => (
   <header>
     <div className="header-content">
       <Link href={pages.homepage.path} className="header-logo">
         <Image src={images.logo} height="40px" alt="logo" />
       </Link>
       <Flex>
-        {profile.username ? <span>Welcome, {profile.username}</span> :
-          menuPages.map(page => (
-            <Link key={page.path} href={page.path} className="header-link">
-              {page.title}
-            </Link>
-          ))
-        }
+        <HeaderMenu profile={profile} />
       </Flex>
     </div>
     <style jsx>
@@ -48,10 +43,6 @@ export const HeaderComponent: FunctionComponent<HeaderProps> = ({ profile }) => 
     </style>
     <style jsx global>
       {`
-        .header-link {
-          margin-left: 15px;
-          color: ${color('light', 100)};
-        }
         .header-logo {
           height: 40px;
         }
