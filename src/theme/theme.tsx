@@ -57,8 +57,8 @@ const fonts = {
 }
 
 const media = {
-  mobile: () => '@media (max-width: 767px)',
-  desktop: () => '@media (max-width: 1439px)',
+  mobile: '(max-width: 768px)',
+  desktop: '(max-width: 1439px)',
 }
 
 export const theme = {
