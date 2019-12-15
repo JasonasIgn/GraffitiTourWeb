@@ -1,4 +1,4 @@
-import { UserActionTypes, ProfileData } from './types'
+import { UserActionTypes, ProfileData, RegisterData } from './types'
 import { FieldError } from '../general/types'
 
 export const profileRequest = () => ({
@@ -21,5 +21,17 @@ export const logoutRequestSuccess = () => ({
 })
 export const logoutRequestFailure = (errors: FieldError[]) => ({
   type: UserActionTypes.LOGOUT_FAILURE,
+  errors,
+})
+
+export const registerRequest = (data: RegisterData) => ({
+  type: UserActionTypes.REGISTER_REQUEST,
+  data: data,
+})
+export const registerRequestSuccess = () => ({
+  type: UserActionTypes.REGISTER_SUCCESS,
+})
+export const registerRequestFailure = (errors: FieldError[]) => ({
+  type: UserActionTypes.REGISTER_FAILURE,
   errors,
 })
