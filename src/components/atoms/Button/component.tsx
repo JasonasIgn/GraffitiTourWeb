@@ -1,10 +1,13 @@
 import React from 'react'
-import { font, color } from '../../../theme'
+import { font, color as colorFunc } from '../../../theme'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  loading?: Boolean
-  width?: String
-  noStyles?: Boolean
+  loading?: boolean
+  width?: string
+  noStyles?: boolean
+  borderRadius?: string
+  color?: string
+  textColor?: string
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -15,6 +18,9 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   onClick,
   width,
   noStyles,
+  color,
+  textColor,
+  borderRadius,
 }) => (
   <button
     type={type}
@@ -28,11 +34,11 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
           transition: 200ms ease-in-out;
           background-size: 220% 500%;
           background-position: 100% 100%;
-          background-image: white;
-          color: black;
+          background-color: ${color || colorFunc('light', 100)};
+          color: ${textColor || 'black'};
           border: none;
           display: inline-flex;
-          borderradius: ${loading ? '50%' : '26px'};
+          border-radius: ${loading ? '50%' : borderRadius || '26px'};
           justify-content: center;
           align-items: center;
           min-width: ${loading ? '52px' : width};
@@ -46,28 +52,27 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
           text-decoration: none;
           text-align: center;
           cursor: pointer;
-          pointerevents: ${disabled ? 'none' : 'auto'};
+          pointer-events: ${disabled ? 'none' : 'auto'};
           user-select: none;
         }
         .button:focus {
           outline: 'none';
         }
         .button:hover:not([disabled]) {
-          box-shadow: 0 4px 10px 0 ${color('light', 300, 0.32)};
+          box-shadow: 0 4px 10px 0 ${colorFunc('light', 300, 0.32)};
           background-size: 300% 300%;
           background-position: 0% 0%;
         }
         .button:active:not([disabled]) {
           background-image: red;
-          box-shadow: 0 4px 10px 0 ${color('light', 300, 0.32)};
+          box-shadow: 0 4px 10px 0 ${colorFunc('light', 300, 0.32)};
         }
         .button:disabled,
         .button[disabled]:not([disabled='false']) {
           cursor: default;
-          background-image: ${loading && color('light', 500)};
+          background-image: ${loading && colorFunc('light', 500)};
         }
-
-        buttonwithoutstyles: {
+        buttonwithoutstyles {
           border: none;
           background: none;
           outline: none;

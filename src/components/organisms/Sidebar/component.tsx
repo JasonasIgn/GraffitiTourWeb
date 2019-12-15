@@ -1,40 +1,73 @@
 import React from 'react'
 import { images } from '../../../utils'
-import { Image } from '../..'
 import { color, media } from '../../../theme'
-import { Button } from '../../atoms'
+import { Button, Link, Image } from '../..'
+import { pages } from '../../pages'
 
-export const Sidebar = ({ opened, profile, logoutRequest }) => {
+const menuPages = [pages.register, pages.login]
+
+export const Sidebar = ({
+  opened,
+  profile,
+  logoutRequest,
+  setSidebarOpened,
+}) => {
   return (
     <nav className={`sidebar-wrapper ${opened ? 'opened' : ''}`}>
       <div className="sidebar-content">
-        <div className="sidebar-header">
-          <div className="user-pic">
-            <Image src={images.user} height="60px" alt="user" />
-          </div>
-          <div className="user-info">
-            <span className="user-name">
-              <strong>{profile.username}</strong>
-            </span>
-            <span className="user-email">
-              <span>{profile.email}</span>
-            </span>
-            <span className="user-role">Administrator</span>
-          </div>
-        </div>
-        <hr />
+        {profile.username && (
+          <React.Fragment>
+            <div className="sidebar-header">
+              <div className="user-pic">
+                <Image src={images.user} height="60px" alt="user" />
+              </div>
+              <div className="user-info">
+                <span className="user-name">
+                  <strong>{profile.username}</strong>
+                </span>
+                <span className="user-email">
+                  <span>{profile.email}</span>
+                </span>
+                <span className="user-role">Administrator</span>
+              </div>
+            </div>
+            <hr />
+          </React.Fragment>
+        )}
         <div className="sidebar-menu">
-          <div className="higher-container"></div>
-          <div className="lower-container">
-            <Button width="100%" onClick={logoutRequest}>Log out</Button>
+          <div className="higher-container">
+            {!profile.username && menuPages.map(page => (
+              <Link key={page.path} href={page.path}>
+                <Button
+                  color={color('blue', 500)}
+                  borderRadius='0px'
+                  onClick={() => setSidebarOpened(false)}
+                  textColor={color('white')}
+                  width="100%">
+                  {page.title}
+                </Button>
+                <hr />
+              </Link>
+            ))}
           </div>
+          {profile.username && (
+            <div className="lower-container">
+              <Button
+                width="100%"
+                color={color('light', 300)}
+                borderRadius="0px"
+                onClick={logoutRequest}>
+                Log out
+              </Button>
+            </div>
+          )}
         </div>
       </div>
       <style jsx>
         {`
           hr {
             margin: 0px;
-            border-color: ${color('blue', 300)};
+            border: 1px solid ${color('blue', 300)};
           }
           .logout-button {
             width: 100%;

@@ -16,7 +16,12 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
         onClick={() => setSidebarOpened(!sidebarOpened)}
         className="menu-btn"
       />
-      <Sidebar opened={sidebarOpened} profile={profile} logoutRequest={logoutRequest} />
+      <Sidebar
+        opened={sidebarOpened}
+        profile={profile}
+        logoutRequest={logoutRequest}
+        setSidebarOpened={setSidebarOpened}
+      />
       <div className="userMenu">
         {profile.username ? (
           <DropDown
