@@ -19,6 +19,7 @@ export const RegisterForm: React.FunctionComponent<RegisterFormProps> = ({
         <FormField name="email" label="Email" />
         <FormField name="password" label="Password" />
         <FormField name="repeat-password" label="Repeat password" />
+        <FormField name="TAC" type="checkbox" label="I agree with the rules" />
         <Button type="submit"> Register </Button>
         <div className="error-wrapper">
           <ErrorMessage>{getError(errors)}</ErrorMessage>
