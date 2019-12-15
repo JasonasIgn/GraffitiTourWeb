@@ -85,6 +85,7 @@ export const Footer = () => (
           flex-basis: 0;
         }
         .lower-container {
+          padding: 5px;
           text-align: center;
         }
       `}

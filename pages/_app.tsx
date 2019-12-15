@@ -37,8 +37,13 @@ class MyApp extends App<MyAppProps, {}, {}> {
         </Layout>
         <style jsx global>
           {`
+            @font-face {
+              font-family: 'Overpass';
+              src: url('/fonts/Overpass-Regular.ttf') format('truetype');
+            }
             body {
               margin: 0px;
+              font-family: 'Overpass', sans-serif;
             }
           `}
         </style>
