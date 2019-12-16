@@ -39,7 +39,7 @@ class MyApp extends App<MyAppProps, {}, {}> {
           {`
             @font-face {
               font-family: 'Overpass';
-              src: url('/fonts/Overpass-Regular.ttf') format('truetype');
+              src: url('/static/fonts/Overpass-Regular.ttf') format('truetype');
             }
             body {
               margin: 0px;
