@@ -20,8 +20,8 @@ export const Checkbox = ({ readOnly, error, id }) => (
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid ${color('blue', 500)};
-            background: ${color('blue')};
+            border: 1px solid ${color('grey', 500)};
+            background: ${color('grey', 500)};
           }
           span {
             cursor: ${readOnly ? 'default' : 'pointer'};
@@ -32,9 +32,10 @@ export const Checkbox = ({ readOnly, error, id }) => (
             width: 20px;
             height: 20px;
             border: 
-              1px solid ${error ? color('primary') : color('blue', 400)};
+              1px solid ${error ? color('primary') : color('grey', 400)};
             border-radius: 4px;
             background: white;
+            user-select: none;
           },
         `}
     </style>

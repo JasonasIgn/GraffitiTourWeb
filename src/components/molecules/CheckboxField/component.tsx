@@ -1,5 +1,6 @@
 import React from 'react'
 import { Flex, Checkbox } from '../..'
+import { color } from '../../../theme'
 
 export const CheckboxField = ({
   label,
@@ -34,6 +35,7 @@ export const CheckboxField = ({
           text-align: left;
           cursor: pointer;
           user-select: none;
+          color: ${color('grey', 200)};
         }
       `}
     </style>

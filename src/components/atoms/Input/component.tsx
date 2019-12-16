@@ -47,7 +47,8 @@ export const Input = ({
             color: ${color('grey', 300)};
             font-size: 16px;
             font-weight: 600;
-            pointerevents: none;
+            pointer-events: none;
+            margin-bottom: 4px;
           }
         `}
       </style>
