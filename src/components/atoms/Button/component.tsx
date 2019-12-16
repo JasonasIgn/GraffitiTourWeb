@@ -21,12 +21,15 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   color,
   textColor,
   borderRadius,
+  className,
+  style,
 }) => (
   <button
     type={type}
     onClick={onClick}
     className={noStyles ? 'buttonWithoutStyles' : 'button'}
-    disabled={disabled}>
+    disabled={disabled}
+    style={style}>
     {children}
     <style jsx>
       {`
@@ -45,7 +48,6 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
           min-width: ${loading ? '52px' : width};
           width: ${loading ? '52px' : width};
           height: 52px;
-          // fontFamily: font();
           font-weight: 600;
           font-size: 12;
           text-transform: uppercase;
@@ -60,7 +62,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
           outline: 'none';
         }
         .button:hover:not([disabled]) {
-          box-shadow: 0 4px 10px 0 ${colorFunc('light', 300, 0.32)};
+          box-shadow: inset 0 0 30px 0 ${colorFunc('light', 300, 0.32)};
           background-size: 300% 300%;
           background-position: 0% 0%;
         }

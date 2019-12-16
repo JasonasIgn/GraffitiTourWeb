@@ -36,25 +36,24 @@ export const Sidebar = ({
         )}
         <div className="sidebar-menu">
           <div className="higher-container">
-            {!profile.username && menuPages.map(page => (
-              <Link key={page.path} href={page.path}>
-                <Button
-                  color={color('blue', 500)}
-                  borderRadius='0px'
-                  onClick={() => setSidebarOpened(false)}
-                  textColor={color('white')}
-                  width="100%">
-                  {page.title}
-                </Button>
-                <hr />
-              </Link>
-            ))}
+            {!profile.username &&
+              menuPages.map((page, index) => (
+                <Link key={page.path} href={page.path}>
+                  <Button
+                    style={index > 0 ? { borderTop: 'none' } : {}}
+                    borderRadius="0px"
+                    onClick={() => setSidebarOpened(false)}
+                    width="100%">
+                    {page.title}
+                  </Button>
+                </Link>
+              ))}
           </div>
           {profile.username && (
             <div className="lower-container">
               <Button
                 width="100%"
-                color={color('light', 300)}
+                color="transparent"
                 borderRadius="0px"
                 onClick={logoutRequest}>
                 Log out
@@ -67,7 +66,7 @@ export const Sidebar = ({
         {`
           hr {
             margin: 0px;
-            border: 1px solid ${color('blue', 300)};
+            border: 1px solid ${color('grey', 500)};
           }
           .logout-button {
             width: 100%;
@@ -107,7 +106,7 @@ export const Sidebar = ({
             height: calc(100% - 60px);
             overflow-y: auto;
             position: relative;
-            background-color: ${color('blue', 400)};
+            background-color: ${color('grey', 800)};
           }
 
           .opened {
@@ -121,13 +120,14 @@ export const Sidebar = ({
           .sidebar-header {
             display: flex;
             padding: 10px 20px;
-            background-color: ${color('blue', 500)};
+            background-color: ${color('grey', 700)};
           }
 
           .user-info {
             display: flex;
             flex-direction: column;
             width: 100%;
+            color: ${color('grey', 100)};
             margin-left: 10px;
           }
         `}

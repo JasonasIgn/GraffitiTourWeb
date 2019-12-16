@@ -27,7 +27,9 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           <DropDown
             closeOnClick
             autoWidth={false}
-            display={<span>Welcome, {profile.username}</span>}>
+            display={
+              <span className="username-text">Welcome, {profile.username}</span>
+            }>
             <div className="dropDownItemsContentWrapper">
               <span className="dropDownItem" onClick={() => logoutRequest()}>
                 <span className="logoutText">Log out</span>
@@ -49,6 +51,12 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           .linksWrapper {
             margin-left: 25;
             font-size: 14px;
+          }
+          logoutText {
+            color: ${color('grey', 700)};
+          }
+          span {
+            color: ${color('grey', 200)};
           }
           .dropDownItemsContentWrapper {
             display: flex;
@@ -122,6 +130,7 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           .menu-btn:after {
             ${sidebarOpened && `transform: translateY(-10px) rotate(-45deg);`}
           }
+          
         `}
       </style>
       <style jsx global>
