@@ -23,6 +23,8 @@ export const Header = () => (
           width: 100%;
           justify-content: center;
           background-color: ${color('grey', 800)};
+          z-index: 10;
+          position: fixed;
         }
         .header-content {
           display: flex;

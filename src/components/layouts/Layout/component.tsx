@@ -25,6 +25,7 @@ export const LayoutComponent = ({ children }) => (
         min-height: calc(100vh - 60px);
         padding: 0 20px;
         // background-color: ${color('primary', 800)};
+        margin-top: 60px;
         background-image: radial-gradient(circle, ${color('primary', 300)} , ${color('primary', 900)});
       }
     `}</style>
