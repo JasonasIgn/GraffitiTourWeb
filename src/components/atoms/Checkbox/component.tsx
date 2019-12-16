@@ -7,7 +7,7 @@ export const Checkbox = ({ readOnly, error, id }) => (
   <label htmlFor={id} className="checkbox-wrapper">
     <input id={id} type="checkbox" className="input" />
     <span className="span">
-      <Image stylable src={images.checkbox} height="9px" width="12px" />
+      <Image src={images.checkbox} height="9px" width="12px" />
     </span>
     <style jsx>
       {`
