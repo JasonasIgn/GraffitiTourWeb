@@ -22,7 +22,7 @@ export const Header = () => (
           height: 60px;
           width: 100%;
           justify-content: center;
-          background-color: ${color('blue', 200)};
+          background-color: ${color('grey', 800)};
         }
         .header-content {
           display: flex;

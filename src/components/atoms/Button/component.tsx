@@ -33,10 +33,11 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
         .button {
           transition: 200ms ease-in-out;
           background-size: 220% 500%;
+          outline: none;
           background-position: 100% 100%;
-          background-color: ${color || colorFunc('light', 100)};
-          color: ${textColor || 'black'};
-          border: none;
+          background-color: ${color || 'transparent'};
+          color: ${textColor || colorFunc('grey', 200)};
+          border: 2px solid ${colorFunc('grey', 300)};
           display: inline-flex;
           border-radius: ${loading ? '50%' : borderRadius || '26px'};
           justify-content: center;

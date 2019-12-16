@@ -40,32 +40,32 @@ export const Footer = () => (
       {`
         hr {
           margin: 0;
-          border: 1px solid ${color('blue', 300)};
+          border: 1px solid ${color('grey', 400)};
         }
         h3 {
-          color: white;
+          color: ${color('grey', 200)};
         }
         .year-text {
           font-weight: 600;
-          color: white;
+          color: ${color('grey', 200)};
           font-size: 20px;
         }
         .contact-email-text {
-          color: white;
+          color: ${color('grey', 200)};
         }
         .contact-email {
-          color: white;
           font-weight: 600;
+          color: ${color('grey', 200)};
         }
         ul {
           padding-left: 18px;
-          color: white;
+          color: ${color('grey', 200)};
         }
         .footer {
           display: flex;
           flex-direction: column;
           min-height: 240px;
-          background-color: ${color('blue', 800)};
+          background-color: ${color('grey', 800)};
         }
         .higher-container {
           display: flex;

@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '..'
 import { Flex } from '../../atoms'
 import { Footer } from '../../molecules'
+import { color } from '../../../theme'
 
 export const LayoutComponent = ({ children }) => (
   <div>
@@ -23,6 +24,8 @@ export const LayoutComponent = ({ children }) => (
       .content-container {
         min-height: calc(100vh - 60px);
         padding: 0 20px;
+        // background-color: ${color('primary', 800)};
+        background-image: radial-gradient(circle, ${color('primary', 300)} , ${color('primary', 900)});
       }
     `}</style>
   </div>

@@ -29,7 +29,7 @@ export const Input = ({
             outline: none;
             box-sizing: border-box;
             height: ${type === 'textarea' ? 'auto' : '40px'};
-            background-color: ${color('light', 100)};
+            background-color: ${color('grey', 200)};
             color: black;
             padding-left: 10px;
             padding-right: 10px;
@@ -44,8 +44,9 @@ export const Input = ({
           }
           label {
             display: block;
-            color: black;
-            font-size: 18px;
+            color: ${color('grey', 300)};
+            font-size: 16px;
+            font-weight: 600;
             pointerevents: none;
           }
         `}
