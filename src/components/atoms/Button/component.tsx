@@ -68,7 +68,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
         }
         .button:active:not([disabled]) {
           background-image: red;
-          box-shadow: 0 4px 10px 0 ${colorFunc('light', 300, 0.32)};
+          box-shadow: inset 0 0 35px 0 ${colorFunc('light', 300, 0.62)};
         }
         .button:disabled,
         .button[disabled]:not([disabled='false']) {
