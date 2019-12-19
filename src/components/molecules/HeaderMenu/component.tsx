@@ -8,7 +8,6 @@ const menuPages = [pages.register, pages.login]
 
 export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
   const [sidebarOpened, setSidebarOpened] = useState(false)
-  console.log(media())
   return (
     <React.Fragment>
       <button
