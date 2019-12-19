@@ -4,6 +4,7 @@ import { api } from '../../utils/api'
 import config from '../../config'
 import { GraffitiActionTypes } from './types'
 
+
 export function* myGraffitiesRequest() {
   try {
     const payload = yield call(api, config.apiMethods.GET, 'user/graffities')

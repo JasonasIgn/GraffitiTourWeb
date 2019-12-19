@@ -2,6 +2,10 @@ import { GraffitiActionTypes, GraffitiesState } from './types'
 
 export const initialState: GraffitiesState = {
   graffities: [],
+  createGraffiti: {
+    loading: false,
+    errors: undefined,
+  },
 }
 
 export const graffitiReducer = (state = initialState, action) => {
