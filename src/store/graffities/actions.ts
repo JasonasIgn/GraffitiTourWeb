@@ -1,4 +1,4 @@
-import { GraffitiActionTypes, Graffiti, GraffitiActionTypes } from './types'
+import { GraffitiActionTypes, Graffiti } from './types'
 import { FieldError } from '../general/types'
 
 export const myGraffitiesRequest = () => ({
@@ -13,8 +13,9 @@ export const myGraffitiesFailure = (errors: FieldError[]) => ({
   errors,
 })
 
-export const createGraffitiRequest = () => ({
+export const createGraffitiRequest = (data) => ({
   type: GraffitiActionTypes.CREATE_GRAFFITI_REQUEST,
+  data
 })
 export const createGraffitiSuccess = () => ({
   type: GraffitiActionTypes.CREATE_GRAFFITI_SUCCESS,

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Formik } from 'formik'
 import { connect } from 'react-redux'
-import { CreateGraffitiForm } from '.'
+import { CreateGraffitiFormComponent } from '.'
 import { FieldError } from '../../../store/general/types'
 import { ApplicationState } from '../../../store'
-import { registerRequest } from '../../../store/users/actions'
+import { createGraffitiRequest } from '../../../store/graffities/actions'
 
 interface PropsFromDispatch {
-  registerRequest: typeof registerRequest
+  createGraffitiRequest: typeof createGraffitiRequest
 }
 
 interface PropsFromState {
@@ -18,41 +18,40 @@ interface PropsFromState {
 type AllProps = PropsFromState & PropsFromDispatch
 
 const initialValues = {
-  email: '',
-  username: '',
-  password: '',
+  name: 'testas',
+  latitude: 10.55,
+  longtitude: 15.65,
 }
 
-const CreateGraffitiFormContainerComponent: React.FunctionComponent<AllProps> = ({
-  registerRequest,
-  loading,
-  errors,
-}) => {
+const CreateGraffitiFormContainerComponent: React.FunctionComponent<
+  AllProps
+> = ({ createGraffitiRequest, loading, errors }) => {
   const onSubmit = async values => {
-    const registerData = {
-      username: values.username,
-      email: values.email,
-      password: values.password,
+    const createGraffitiData = {
+      name: values.name,
+      latitude: values.latitude,
+      longtitude: values.longtitude,
     }
-    registerRequest(registerData)
+    createGraffitiRequest(createGraffitiData)
   }
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues}>
-      <CreateGraffitiForm errors={errors} />
+      <CreateGraffitiFormComponent errors={errors} />
     </Formik>
   )
 }
 
-const mapStateToProps = ({ users }: ApplicationState) => ({
-  loading: users.register.loading,
-  errors: users.register.errors,
+const mapStateToProps = ({ graffiti }: ApplicationState) => ({
+  loading: graffiti.createGraffiti.loading,
+  errors: graffiti.createGraffiti.errors,
 })
 
 const mapDispatchToProps = dispatch => ({
-  registerRequest: registerData => dispatch(registerRequest(registerData)),
+  createGraffitiRequest: createGraffitiData =>
+    dispatch(createGraffitiRequest(createGraffitiData)),
 })
 
-export const CreateGraffitiFormContainer = connect(
+export const CreateGraffitiForm = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(CreateGraffitiFormContainerComponent)

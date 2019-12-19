@@ -1,3 +1,3 @@
-import { MyGraffitiesPage } from '../src/components'
+import { CreateGraffitiPage } from '../src/components'
 
-export default MyGraffitiesPage
+export default CreateGraffitiPage

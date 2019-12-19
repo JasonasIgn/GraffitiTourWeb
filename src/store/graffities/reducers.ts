@@ -15,6 +15,12 @@ export const graffitiReducer = (state = initialState, action) => {
         ...state,
         graffities: action.data,
       }
+    case GraffitiActionTypes.CREATE_GRAFFITI_REQUEST:
+      return { ...state, register: { loading: true, errors: undefined } }
+    case GraffitiActionTypes.CREATE_GRAFFITI_SUCCESS:
+      return { ...state, register: { loading: false } }
+    case GraffitiActionTypes.CREATE_GRAFFITI_FAILURE:
+      return { ...state, register: { loading: false, errors: action.errors } }
     default:
       return state
   }

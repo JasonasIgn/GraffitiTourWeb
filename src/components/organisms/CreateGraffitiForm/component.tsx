@@ -5,24 +5,20 @@ import { FieldError } from '../../../store/general/types'
 import { getError } from '../../../utils'
 import { color } from '../../../theme'
 
-interface RegisterFormProps {
+interface CreateGraffitiFormProps {
   errors?: FieldError[]
 }
 
-export const CreateGraffitiForm: React.FunctionComponent<RegisterFormProps> = ({
+export const CreateGraffitiFormComponent: React.FunctionComponent<CreateGraffitiFormProps> = ({
   errors,
 }) => {
   return (
     <div className="create-graffiti-form-wrapper">
       <h1>Create graffiti</h1>
       <Form className="create-graffiti-form">
-        <FormField name="username" label="Username" />
-        <FormField name="email" label="Email" />
-        <FormField name="password" label="Password" />
-        <FormField name="repeat-password" label="Repeat password" />
-        <FormField name="TAC" type="checkbox" label="I agree with the rules" />
+        <FormField name="name" label="Name" />
         <div className="button-wrapper">
-          <Button type="submit"> Register </Button>
+          <Button type="submit"> Create </Button>
         </div>
         <div className="error-wrapper">
           <ErrorMessage>{getError(errors)}</ErrorMessage>
