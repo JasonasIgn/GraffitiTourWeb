@@ -3,16 +3,6 @@ import { Table } from '../..'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
 
-const data = [
-  // {
-  //   id: 1,
-  //   name: 'HAHA',
-  //   longtitude: 15.156,
-  //   latitude: 6456.15,
-  //   created_at: 'asd',
-  // },
-]
-
 const rowStructure = graffiti => ({
   rowContents: [
     {
@@ -34,7 +24,7 @@ const rowStructure = graffiti => ({
   ],
 })
 
-export const MyGraffitiesPage = () => (
+export const MyGraffitiesPageComponent = ({ graffities = [] }) => (
   <div className="page-wrapper">
     <div>
       <h1>My graffities</h1>
@@ -44,7 +34,7 @@ export const MyGraffitiesPage = () => (
     </div>
     <div className="tableWrapper">
       <Table
-        data={data}
+        data={graffities}
         rowStructure={rowStructure}
         notFoundText="You don't have any graffities"
       />
