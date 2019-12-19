@@ -1,15 +1,16 @@
 import React from 'react'
 import { Table } from '../..'
 import { color } from '../../../theme'
+import { Button } from '../../atoms'
 
 const data = [
-  {
-    id: 1,
-    name: 'HAHA',
-    longtitude: 15.156,
-    latitude: 6456.15,
-    created_at: 'asd',
-  },
+  // {
+  //   id: 1,
+  //   name: 'HAHA',
+  //   longtitude: 15.156,
+  //   latitude: 6456.15,
+  //   created_at: 'asd',
+  // },
 ]
 
 const rowStructure = graffiti => ({
@@ -38,6 +39,9 @@ export const MyGraffitiesPage = () => (
     <div>
       <h1>My graffities</h1>
     </div>
+    <div className="create-button-container">
+      <Button>Create</Button>
+    </div>
     <div className="tableWrapper">
       <Table
         data={data}
@@ -57,9 +61,16 @@ export const MyGraffitiesPage = () => (
           width: 100%;
           height: 100%;
         }
-        
+
         h1 {
-          color: ${color('light', 200)}
+          color: ${color('light', 200)};
+        }
+
+        .create-button-container {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 10px;
+          margin-right: 15px;
         }
       `}
     </style>

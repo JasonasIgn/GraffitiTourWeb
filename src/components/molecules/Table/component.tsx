@@ -22,12 +22,13 @@ export const Table = ({
             />
           ))}
         </tbody>
-      </table>
-      {!(data.length > 0) && (
-        <div className="tableNotFound">
+        {!(data.length > 0) && (
+        <tr className="tableNotFound">
           <span>{notFoundText}</span>
-        </div>
+        </tr>
       )}
+      </table>
+      
     </React.Fragment>
     <style jsx>
       {`
