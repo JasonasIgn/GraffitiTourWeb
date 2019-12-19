@@ -15,4 +15,8 @@ export const pages = {
     path: '/about',
     title: 'About',
   },
+  myGraffities: {
+    path: '/my-graffities',
+    title: 'My Graffities',
+  },
 }
