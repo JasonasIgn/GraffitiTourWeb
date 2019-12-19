@@ -1,6 +1,8 @@
 import React from 'react'
 import { Header } from '..'
 import { Flex } from '../../atoms'
+import { Footer } from '../../molecules'
+import { color } from '../../../theme'
 
 export const LayoutComponent = ({ children }) => (
   <div>
@@ -8,6 +10,7 @@ export const LayoutComponent = ({ children }) => (
     <Flex justifyContent="center" grow="1" className="content-container">
       {children}
     </Flex>
+    <Footer />
     <style jsx>{`
       div {
         display: flex;
@@ -19,7 +22,10 @@ export const LayoutComponent = ({ children }) => (
     `}</style>
     <style jsx global>{`
       .content-container {
+        min-height: calc(100vh - 60px);
         padding: 0 20px;
+        margin-top: 60px;
+        background-image: radial-gradient(circle, ${color('primary', 300)} , ${color('primary', 900)});
       }
     `}</style>
   </div>

@@ -3,6 +3,7 @@ import { Form } from 'formik'
 import { FormField, Button, ErrorMessage } from '../..'
 import { FieldError } from '../../../store/general/types'
 import { getError } from '../../../utils'
+import { color } from '../../../theme'
 
 interface LoginFormProps {
   errors?: FieldError[]
@@ -17,7 +18,9 @@ export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
       <Form className="login-form">
         <FormField name="email" label="Email" />
         <FormField name="password" label="Password" />
-        <Button type="submit"> Login </Button>
+        <div className="button-wrapper">
+          <Button type="submit"> Login </Button>
+        </div>
         <div className="error-wrapper">
           <ErrorMessage>{getError(errors)}</ErrorMessage>
         </div>
@@ -25,10 +28,26 @@ export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
       <style jsx>
         {`
           .login-form-wrapper {
+            height: max-content;
+            padding: 40px;
             max-width: 340px;
             width: 100%;
-            margin-top: 40px;
+            border-radius: 8px;
+            background-image: linear-gradient(
+              to bottom right,
+              ${color('grey', 600)},
+              ${color('grey', 800)}
+            );
+            margin-bottom: auto;
+            margin-top: auto;
+            box-shadow: 20px 20px 40px black;
           }
+          .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+          }
+
           .error-wrapper {
             text-align: center;
             width: 100%;
@@ -36,6 +55,7 @@ export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
           }
           h1 {
             text-align: center;
+            color: ${color('grey', 200)};
           }
         `}
       </style>

@@ -4,6 +4,7 @@ export const Flex = ({
   direction = 'row',
   wrap = 'no-wrap',
   justifyContent = 'flex-start',
+  alignContent = 'stretch',
   alignItems = 'stretch',
   order = '0',
   grow = '0',
@@ -28,6 +29,7 @@ export const Flex = ({
           flex-shrink: ${shrink};
           flex-basis: ${basis};
           position: ${position};
+          align-content: ${alignContent};
         }
       `}
     </style>

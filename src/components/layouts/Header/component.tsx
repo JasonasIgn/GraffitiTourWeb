@@ -22,12 +22,14 @@ export const Header = () => (
           height: 60px;
           width: 100%;
           justify-content: center;
+          background-color: ${color('grey', 800)};
+          z-index: 10;
+          position: fixed;
         }
         .header-content {
           display: flex;
           width: 100%;
           max-width: 1440px;
-          background-color: ${color('blue', 200)};
           justify-content: space-between;
           align-items: center;
           padding: 0 20px;

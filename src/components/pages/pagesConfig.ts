@@ -11,4 +11,12 @@ export const pages = {
     path: '/register',
     title: 'Register',
   },
+  about: {
+    path: '/about',
+    title: 'About',
+  },
+  myGraffities: {
+    path: '/my-graffities',
+    title: 'My Graffities',
+  },
 }
