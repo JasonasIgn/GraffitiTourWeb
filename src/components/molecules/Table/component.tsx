@@ -6,7 +6,7 @@ export const Table = ({
   data,
   rowStructure,
   notFoundText,
-  rowKey,
+  rowKey = null,
 }) => (
   <div className="tableWrapper">
     <React.Fragment>
@@ -29,7 +29,6 @@ export const Table = ({
         </div>
       )}
     </React.Fragment>
-    }
     <style jsx>
       {`
       .tableWrapper {

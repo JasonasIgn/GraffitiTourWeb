@@ -16,7 +16,7 @@ export const TableRow = ({ headerRow = null, rowStructure }) => (
         justify-content: space-between;
         align-items: center;
         padding: 20px;
-        color: ${color('dark', 200)};
+        color: ${color('light', 200)};
         font-weight: 800;
         font-size: 12px;
         height: 100%;
@@ -29,7 +29,7 @@ export const TableRow = ({ headerRow = null, rowStructure }) => (
         padding: 20px;
         background-color: ${color('dark', 100)};
         color: ${color('light', 200)};
-        font-size: 4px;
+        font-size: 14px;
       }
       `}
     </style>
