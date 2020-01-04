@@ -12,7 +12,7 @@ export const FormField = ({ type = null, name = '', label = '', ...props }) => {
   }
   return (
     <div>
-      <Field label={label} name={name} component={chooseInput()} />
+      <Field type={type} label={label} name={name} component={chooseInput()} />
       <div className="inputErrorMessageWrapper">
         <FormikErrorMessage
           name={name}

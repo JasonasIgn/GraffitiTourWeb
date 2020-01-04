@@ -17,7 +17,7 @@ export const CreateGraffitiFormComponent: React.FunctionComponent<CreateGraffiti
       <h1>Create graffiti</h1>
       <Form className="create-graffiti-form">
         <FormField name="name" label="Name" />
-        <FormField name="description" label="Description" />
+        <FormField type="textarea" name="description" label="Description" />
         <div className="button-wrapper">
           <Button type="submit"> Create </Button>
         </div>
