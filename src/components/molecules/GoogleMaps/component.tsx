@@ -23,7 +23,7 @@ export const GoogleMaps = compose(
     <GoogleMap
       onClick={onMapClick}
       defaultZoom={8}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+      defaultCenter={{ lat: 54.687157, lng: 25.279652 }}>
       {markers &&
         markers.map(
           markerInfo =>
