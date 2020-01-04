@@ -20,8 +20,7 @@ type AllProps = PropsFromState & PropsFromDispatch
 const initialValues = {
   name: 'testas',
   description: 'descirption',
-  latitude: 10.55,
-  longtitude: 15.65,
+  position: {},
 }
 
 const CreateGraffitiFormContainerComponent: React.FunctionComponent<
@@ -31,8 +30,8 @@ const CreateGraffitiFormContainerComponent: React.FunctionComponent<
     const createGraffitiData = {
       name: values.name,
       description: values.description,
-      latitude: values.latitude,
-      longtitude: values.longtitude,
+      latitude: values.position.lat,
+      longtitude: values.position.lng,
     }
     createGraffitiRequest(createGraffitiData)
   }

@@ -23,7 +23,7 @@ export const LayoutComponent = ({ children }) => (
     <style jsx global>{`
       .content-container {
         min-height: calc(100vh - 60px);
-        padding: 0 20px;
+        padding: 30px 20px;
         margin-top: 60px;
         background-image: radial-gradient(circle, ${color('primary', 300)} , ${color('primary', 900)});
       }

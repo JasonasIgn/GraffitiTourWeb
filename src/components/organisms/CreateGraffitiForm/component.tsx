@@ -9,13 +9,14 @@ interface CreateGraffitiFormProps {
   errors?: FieldError[]
 }
 
-export const CreateGraffitiFormComponent: React.FunctionComponent<CreateGraffitiFormProps> = ({
-  errors,
-}) => {
+export const CreateGraffitiFormComponent: React.FunctionComponent<
+  CreateGraffitiFormProps
+> = ({ errors }) => {
   return (
     <div className="create-graffiti-form-wrapper">
       <h1>Create graffiti</h1>
       <Form className="create-graffiti-form">
+        <FormField name="position" label="Position" type="googleMaps"/>
         <FormField name="name" label="Name" />
         <FormField type="textarea" name="description" label="Description" />
         <div className="button-wrapper">
@@ -28,7 +29,7 @@ export const CreateGraffitiFormComponent: React.FunctionComponent<CreateGraffiti
       <style jsx>
         {`
           .create-graffiti-form-wrapper {
-            max-width: 340px;
+            max-width: 500px;
             width: 100%;
             border-radius: 8px;
             background-image: linear-gradient(

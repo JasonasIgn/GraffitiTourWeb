@@ -2,11 +2,13 @@ import React from 'react'
 import { Field, ErrorMessage as FormikErrorMessage } from 'formik'
 import { Input, ErrorMessage } from '../..'
 import { CheckboxField } from '../CheckboxField/component'
+import { GoogleMapsField } from '../GoogleMapsField'
 
 export const FormField = ({ type = null, name = '', label = '', ...props }) => {
   const chooseInput = () => {
     const inputType = {
       checkbox: CheckboxField,
+      googleMaps: GoogleMapsField,
     }
     return inputType[type] || Input
   }
