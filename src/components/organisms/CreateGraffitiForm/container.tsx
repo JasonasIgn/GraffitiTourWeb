@@ -19,6 +19,7 @@ type AllProps = PropsFromState & PropsFromDispatch
 
 const initialValues = {
   name: 'testas',
+  description: 'descirption',
   latitude: 10.55,
   longtitude: 15.65,
 }
@@ -29,6 +30,7 @@ const CreateGraffitiFormContainerComponent: React.FunctionComponent<
   const onSubmit = async values => {
     const createGraffitiData = {
       name: values.name,
+      description: values.description,
       latitude: values.latitude,
       longtitude: values.longtitude,
     }
