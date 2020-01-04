@@ -1,7 +1,8 @@
 import { GraffitiActionTypes, GraffitiesState } from './types'
 
 export const initialState: GraffitiesState = {
-  graffities: [],
+  myGraffities: [],
+  publicGraffities: [],
   createGraffiti: {
     loading: false,
     errors: undefined,
@@ -10,17 +11,25 @@ export const initialState: GraffitiesState = {
 
 export const graffitiReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GraffitiActionTypes.GRAFFITIES_SUCCESS:
+      return {
+        ...state,
+        publicGraffities: action.data,
+      }
     case GraffitiActionTypes.MY_GRAFFITIES_SUCCESS:
       return {
         ...state,
-        graffities: action.data,
+        myGraffities: action.data,
       }
     case GraffitiActionTypes.CREATE_GRAFFITI_REQUEST:
-      return { ...state, register: { loading: true, errors: undefined } }
+      return { ...state, createGraffiti: { loading: true, errors: undefined } }
     case GraffitiActionTypes.CREATE_GRAFFITI_SUCCESS:
-      return { ...state, register: { loading: false } }
+      return { ...state, createGraffiti: { loading: false } }
     case GraffitiActionTypes.CREATE_GRAFFITI_FAILURE:
-      return { ...state, register: { loading: false, errors: action.errors } }
+      return {
+        ...state,
+        createGraffiti: { loading: false, errors: action.errors },
+      }
     default:
       return state
   }

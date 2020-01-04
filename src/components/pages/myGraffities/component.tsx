@@ -12,11 +12,11 @@ const rowStructure = graffiti => ({
     },
     {
       title: 'Longtitude',
-      content: graffiti && graffiti.longtitude,
+      content: graffiti && graffiti.lng,
     },
     {
       title: 'Latitude',
-      content: graffiti && graffiti.latitude,
+      content: graffiti && graffiti.lat,
     },
     {
       title: 'Created at',

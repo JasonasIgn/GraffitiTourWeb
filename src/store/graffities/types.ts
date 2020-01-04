@@ -7,10 +7,14 @@ export enum GraffitiActionTypes {
   CREATE_GRAFFITI_REQUEST = '@@graffities/CREATE_GRAFFITI_REQUEST',
   CREATE_GRAFFITI_SUCCESS = '@@graffities/CREATE_GRAFFITI_SUCCESS',
   CREATE_GRAFFITI_FAILURE = '@@graffities/CREATE_GRAFFITI_FAILURE',
+  GRAFFITIES_REQUEST = '@@graffities/GRAFFITIES_REQUEST',
+  GRAFFITIES_SUCCESS = '@@graffities/GRAFFITIES_SUCCESS',
+  GRAFFITIES_FAILURE = '@@graffities/GRAFFITIES_FAILURE',
 }
 
 export interface GraffitiesState {
-  graffities: Graffiti[]
+  publicGraffities: Graffiti[]
+  myGraffities: Graffiti[]
   createGraffiti: CreateGraffitiState
 }
 

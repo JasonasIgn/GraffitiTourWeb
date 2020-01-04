@@ -26,7 +26,7 @@ const MyGraffitiesPageContainerComponent: React.FunctionComponent<AllProps> = ({
 }
 
 const mapStateToProps = ({ graffiti }: ApplicationState) => ({
-  graffities: graffiti.graffities,
+  graffities: graffiti.myGraffities,
 })
 
 const mapDispatchToProps = {
