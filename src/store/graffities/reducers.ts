@@ -9,6 +9,10 @@ export const initialState: GraffitiesState = {
   },
   graffiti: null,
   adminGraffities: [],
+  editGraffiti: {
+    loading: false,
+    errors: undefined,
+  },
 }
 
 export const graffitiReducer = (state = initialState, action) => {
@@ -41,6 +45,16 @@ export const graffitiReducer = (state = initialState, action) => {
       return {
         ...state,
         createGraffiti: { loading: false, errors: action.errors },
+      }
+
+    case GraffitiActionTypes.EDIT_GRAFFITI_REQUEST:
+      return { ...state, editGraffiti: { loading: true, errors: undefined } }
+    case GraffitiActionTypes.EDIT_GRAFFITI_SUCCESS:
+      return { ...state, editGraffiti: { loading: false } }
+    case GraffitiActionTypes.EDIT_GRAFFITI_FAILURE:
+      return {
+        ...state,
+        editGraffiti: { loading: false, errors: action.errors },
       }
     default:
       return state
