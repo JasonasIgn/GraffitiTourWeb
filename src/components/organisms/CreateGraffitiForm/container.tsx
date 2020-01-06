@@ -2,17 +2,16 @@ import React from 'react'
 import { Formik } from 'formik'
 import { connect } from 'react-redux'
 import { CreateGraffitiFormComponent } from '.'
-import { FieldError } from '../../../store/general/types'
 import { ApplicationState } from '../../../store'
 import { createGraffitiRequest } from '../../../store/graffities/actions'
+import { CreateGraffitiState } from '../../../store/graffities/types'
 
 interface PropsFromDispatch {
   createGraffitiRequest: typeof createGraffitiRequest
 }
 
 interface PropsFromState {
-  loading: Boolean
-  errors?: FieldError[]
+  graffiti: CreateGraffitiState
 }
 
 type AllProps = PropsFromState & PropsFromDispatch
@@ -21,11 +20,12 @@ const initialValues = {
   name: 'testas',
   description: 'descirption',
   position: {},
+  uploads: [],
 }
 
 const CreateGraffitiFormContainerComponent: React.FunctionComponent<
   AllProps
-> = ({ createGraffitiRequest, loading, errors }) => {
+> = ({ createGraffitiRequest, graffiti }) => {
   const onSubmit = async values => {
     const createGraffitiData = {
       name: values.name,
@@ -37,14 +37,16 @@ const CreateGraffitiFormContainerComponent: React.FunctionComponent<
   }
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues}>
-      <CreateGraffitiFormComponent errors={errors} />
+      <CreateGraffitiFormComponent graffiti={graffiti} />
     </Formik>
   )
 }
 
 const mapStateToProps = ({ graffiti }: ApplicationState) => ({
-  loading: graffiti.createGraffiti.loading,
-  errors: graffiti.createGraffiti.errors,
+  graffiti: {
+    loading: graffiti.createGraffiti.loading,
+    errors: graffiti.createGraffiti.errors,
+  },
 })
 
 const mapDispatchToProps = dispatch => ({

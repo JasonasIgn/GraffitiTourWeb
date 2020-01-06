@@ -12,7 +12,9 @@ const googleMapsContainerStyles = {
   height: '600px',
 }
 
-export const HomepageComponent: React.FunctionComponent<HomepageProps>  = ({ graffities }) => (
+export const HomepageComponent: React.FunctionComponent<HomepageProps> = ({
+  graffities,
+}) => (
   <div>
     <h1>Eplore nearby graffities</h1>
     <GoogleMaps

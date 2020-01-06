@@ -24,7 +24,6 @@ export const GoogleMapsField = ({
     setFieldValue(name || field.name, position)
     setMarker(position)
   }
-  console.log(field.value, 'CIA')
   return (
     <>
       {label && (

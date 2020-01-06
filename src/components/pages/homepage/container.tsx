@@ -21,9 +21,7 @@ const HomepagePageContainerComponent: React.FunctionComponent<AllProps> = ({
 }) => {
   useEffect(() => {
     graffitiesRequest()
-    console.log("veikia")
   }, [])
-  console.log(graffities, "cia")
   return <HomepageComponent graffities={graffities} />
 }
 

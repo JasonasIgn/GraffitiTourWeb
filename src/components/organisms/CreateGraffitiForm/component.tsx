@@ -1,17 +1,17 @@
 import React from 'react'
 import { Form } from 'formik'
 import { FormField, Button, ErrorMessage } from '../..'
-import { FieldError } from '../../../store/general/types'
 import { getError } from '../../../utils'
 import { color } from '../../../theme'
+import { CreateGraffitiState } from '../../../store/graffities/types'
 
 interface CreateGraffitiFormProps {
-  errors?: FieldError[]
+  graffiti: CreateGraffitiState,
 }
 
 export const CreateGraffitiFormComponent: React.FunctionComponent<
   CreateGraffitiFormProps
-> = ({ errors }) => {
+> = ({ graffiti }) => {
   return (
     <div className="create-graffiti-form-wrapper">
       <h1>Create graffiti</h1>
@@ -19,11 +19,12 @@ export const CreateGraffitiFormComponent: React.FunctionComponent<
         <FormField name="position" label="Position" type="googleMaps"/>
         <FormField name="name" label="Name" />
         <FormField type="textarea" name="description" label="Description" />
+        <FormField type="dropzoneWithGallery" name="uploads" label="Photo" />
         <div className="button-wrapper">
           <Button type="submit"> Create </Button>
         </div>
         <div className="error-wrapper">
-          <ErrorMessage>{getError(errors)}</ErrorMessage>
+          <ErrorMessage>{getError(graffiti.errors)}</ErrorMessage>
         </div>
       </Form>
       <style jsx>

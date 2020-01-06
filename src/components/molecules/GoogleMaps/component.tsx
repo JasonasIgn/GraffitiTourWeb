@@ -19,7 +19,6 @@ export const GoogleMaps = compose(
   withScriptjs,
   withGoogleMap,
 )(({ clickable, markers = [], onMapClick }) => {
-  console.log(markers)
   return (
     <GoogleMap
       onClick={onMapClick}

@@ -3,12 +3,14 @@ import { Field, ErrorMessage as FormikErrorMessage } from 'formik'
 import { Input, ErrorMessage } from '../..'
 import { CheckboxField } from '../CheckboxField/component'
 import { GoogleMapsField } from '../GoogleMapsField'
+import { DropZoneWithGallery } from '../DropZoneWithGallery'
 
 export const FormField = ({ type = null, name = '', label = '', ...props }) => {
   const chooseInput = () => {
     const inputType = {
       checkbox: CheckboxField,
       googleMaps: GoogleMapsField,
+      dropzoneWithGallery: DropZoneWithGallery,
     }
     return inputType[type] || Input
   }

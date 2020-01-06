@@ -6,4 +6,7 @@ export default {
     PUT: 'put',
     DELETE: 'delete',
   },
+  acceptedImageTypes: ['image/png', 'image/jpeg', 'image/jpg'],
+  maxImageSize: 5000000,
+  maxUploadImages: 5,
 }
