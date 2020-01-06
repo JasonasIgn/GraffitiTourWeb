@@ -5,6 +5,7 @@ import { Button, Link, Image } from '../..'
 import { pages } from '../../pages'
 
 const menuPages = [pages.register, pages.login]
+const menuPagesLoggedIn = [pages.myGraffities]
 
 export const Sidebar = ({
   opened,
@@ -36,18 +37,29 @@ export const Sidebar = ({
         )}
         <div className="sidebar-menu">
           <div className="higher-container">
-            {!profile.username &&
-              menuPages.map((page, index) => (
-                <Link key={page.path} href={page.path}>
-                  <Button
-                    style={index > 0 ? { borderTop: 'none' } : {}}
-                    borderRadius="0px"
-                    onClick={() => setSidebarOpened(false)}
-                    width="100%">
-                    {page.title}
-                  </Button>
-                </Link>
-              ))}
+            {!profile.username
+              ? menuPages.map((page, index) => (
+                  <Link key={page.path} href={page.path}>
+                    <Button
+                      style={index > 0 ? { borderTop: 'none' } : {}}
+                      borderRadius="0px"
+                      onClick={() => setSidebarOpened(false)}
+                      width="100%">
+                      {page.title}
+                    </Button>
+                  </Link>
+                ))
+              : menuPagesLoggedIn.map((page, index) => (
+                  <Link key={page.path} href={page.path}>
+                    <Button
+                      style={index > 0 ? { borderTop: 'none' } : {}}
+                      borderRadius="0px"
+                      onClick={() => setSidebarOpened(false)}
+                      width="100%">
+                      {page.title}
+                    </Button>
+                  </Link>
+                ))}
           </div>
           {profile.username && (
             <div className="lower-container">
