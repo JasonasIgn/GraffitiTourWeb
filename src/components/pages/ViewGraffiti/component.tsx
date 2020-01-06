@@ -5,6 +5,8 @@ import { GraffitiWithPhotos } from '../../../store/graffities/types'
 import StarRating from 'react-star-rating-component'
 import config from '../../../config'
 import { color } from '../../../theme'
+import { Button } from '../../atoms'
+import { Table } from '../../molecules'
 
 interface Props {
   graffiti: GraffitiWithPhotos
@@ -19,6 +21,29 @@ const getMainPhotoIndex = graffiti => {
     upload => upload.id === graffiti.thumbnail,
   )
 }
+
+const rowStructure = rating => ({
+  rowContents: [
+    {
+      title: 'User',
+      content: rating && rating.username,
+    },
+    {
+      title: 'Comment',
+      content: rating && rating.comment,
+    },
+    {
+      title: 'Rating',
+      content: rating && (
+        <StarRating
+          starCount={5}
+          value={rating.rating}
+          emptyStarColor={color('light', 300)}
+        />
+      ),
+    },
+  ],
+})
 
 export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
   graffiti,
@@ -79,8 +104,30 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
             defaultZoom={12}
           />
         </div>
+        <div className="ratingsWrapper">
+          <div className="ratingsUpperContainer">
+            <h2>Latest ratings</h2>
+            <Button>Rate</Button>
+          </div>
+          <hr />
+          <div className="tableWrapper">
+            <Table
+              data={graffiti.latestRatings}
+              rowStructure={rowStructure}
+              notFoundText="You don't have any graffities"
+            />
+          </div>
+        </div>
         <style jsx>
           {`
+            .ratingsWrapper {
+              margin-top: 15px;
+            }
+            .ratingsUpperContainer {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
             .starRatingWrapper {
               position: absolute;
               top: 5px;
@@ -119,6 +166,7 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
               border-radius: 8px;
             }
             h1,
+            h2,
             h4 {
               color: ${color('light', 300)};
             }

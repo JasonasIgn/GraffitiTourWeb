@@ -41,10 +41,17 @@ export interface GraffitiWithPhotos {
   description: string
   created_at: Date
   photos: Photo[]
+  latestRatings: Rating[]
 }
 
 export interface Photo {
   id: number
+}
+
+export interface Rating {
+  id: number
+  rating: number
+  comment: string
 }
 
 
