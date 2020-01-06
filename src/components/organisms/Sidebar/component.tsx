@@ -3,6 +3,7 @@ import { images } from '../../../utils'
 import { color, media } from '../../../theme'
 import { Button, Link, Image } from '../..'
 import { pages } from '../../pages'
+import config from '../../../config'
 
 const menuPages = [pages.register, pages.login]
 const menuPagesLoggedIn = [pages.myGraffities]
@@ -29,7 +30,12 @@ export const Sidebar = ({
                 <span className="user-email">
                   <span>{profile.email}</span>
                 </span>
-                <span className="user-role">Administrator</span>
+                <span className="user-role">
+                  {
+                    config.roles[profile.roles[profile.roles.length - 1].title]
+                      .name
+                  }
+                </span>
               </div>
             </div>
             <hr />

@@ -14,12 +14,17 @@ export enum UserActionTypes {
 export interface ProfileData {
   username: string
   email: string
+  roles: Role[]
 }
 
 export interface RegisterData {
   username: string
   email: string
   password: string
+}
+
+interface Role {
+  title: string
 }
 
 export interface RegisterState {

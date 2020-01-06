@@ -4,6 +4,7 @@ export const initialState: UsersState = {
   profile: {
     username: '',
     email: '',
+    roles: undefined,
   },
   register: {
     errors: undefined,
@@ -19,6 +20,7 @@ export const userReducer = (state = initialState, action) => {
         profile: {
           username: action.profile.username,
           email: action.profile.email,
+          roles: action.profile.roles
         },
       }
     case UserActionTypes.LOGOUT_SUCCESS:
