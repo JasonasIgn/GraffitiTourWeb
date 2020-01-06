@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from '../..'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
+import NextJSLink from 'next/link'
 import { pages } from '../pagesConfig'
 
 const usersRowStructure = user => ({
@@ -20,7 +21,11 @@ const usersRowStructure = user => ({
     },
     {
       title: '',
-      content: user && <Button>Edit</Button>,
+      content: user && (
+        <NextJSLink href={`${pages.editUser.path}/${user.id}`}>
+          <Button>Edit</Button>
+        </NextJSLink>
+      ),
     },
   ],
 })
@@ -83,7 +88,6 @@ export class AdminPanelPageComponent extends React.Component<any, any> {
 
   render() {
     const { selectedTab, data, rowStructure } = this.state
-    console.log(this.state)
     return (
       <div className="page-wrapper">
         <div>

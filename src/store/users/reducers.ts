@@ -12,6 +12,10 @@ export const initialState: UsersState = {
   },
   adminUsers: [],
   adminUser: undefined,
+  editUser: {
+    errors: undefined,
+    loading: false,
+  },
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -41,6 +45,14 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, register: { loading: false } }
     case UserActionTypes.REGISTER_FAILURE:
       return { ...state, register: { loading: false, errors: action.errors } }
+
+    case UserActionTypes.ADMIN_USER_EDIT_REQUEST:
+      return { ...state, editUser: { loading: true, errors: undefined } }
+    case UserActionTypes.ADMIN_USER_EDIT_SUCCESS:
+      return { ...state, editUser: { loading: false } }
+    case UserActionTypes.ADMIN_USER_EDIT_FAILURE:
+      return { ...state, editUser: { loading: false, errors: action.errors } }
+
     case UserActionTypes.ADMIN_USERS_SUCCESS:
       return {
         ...state,

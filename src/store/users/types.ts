@@ -16,6 +16,9 @@ export enum UserActionTypes {
   ADMIN_USER_REQUEST = '@@users/ADMIN_USER_REQUEST',
   ADMIN_USER_SUCCESS = '@@users/ADMIN_USER_SUCCESS',
   ADMIN_USER_FAILURE = '@@users/ADMIN_USER_FAILURE',
+  ADMIN_USER_EDIT_REQUEST = '@@users/ADMIN_USER_EDIT_REQUEST',
+  ADMIN_USER_EDIT_SUCCESS = '@@users/ADMIN_USER_EDIT_SUCCESS',
+  ADMIN_USER_EDIT_FAILURE = '@@users/ADMIN_USER_EDIT_FAILURE',
 }
 export interface ProfileData {
   username: string
@@ -27,6 +30,15 @@ export interface RegisterData {
   username: string
   email: string
   password: string
+}
+
+export interface UserEditData {
+  username: string
+}
+
+export interface UserEditState {
+  readonly loading: boolean
+  readonly errors?: FieldError[]
 }
 
 export interface Role {
@@ -43,6 +55,7 @@ export interface UsersState {
   profile: ProfileData
   adminUsers: AdminUser[]
   adminUser: AdminUser
+  editUser: UserEditState
 }
 
 export interface AdminUser {

@@ -1,22 +1,21 @@
 import React from 'react'
 import { color } from '../../../theme'
-import { Button } from '../../atoms'
-import { AdminUser } from '../../../store/users/types'
-import { EditUserForm } from '../../organisms/EditUserForm'
+import { EditGraffitiForm } from '../../organisms/EditGraffitiForm'
+import { Graffiti } from '../../../store/graffities/types'
 
 interface Props {
-  user: AdminUser
-  adminUserRequest: Function
+  graffiti: Graffiti
+  graffitiRequest: Function
 }
 
-export const EditUserPageComponent: React.FunctionComponent<Props> = ({
-  user,
-  adminUserRequest,
+export const EditGraffitiPageComponent: React.FunctionComponent<Props> = ({
+  graffiti,
+  graffitiRequest,
 }) => {
   return (
     <div className="pageWrapper">
-      <h1>Edit user</h1>
-      <EditUserForm user={user} />
+      <h1>Edit graffiti</h1>
+      <EditGraffitiForm graffiti={graffiti} />
       <style jsx>
         {`
           .ratingsWrapper {

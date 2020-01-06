@@ -16,12 +16,16 @@ export enum GraffitiActionTypes {
   ADMIN_GRAFFITIES_REQUEST = '@@graffities/ADMIN_GRAFFITIES_REQUEST',
   ADMIN_GRAFFITIES_SUCCESS = '@@graffities/ADMIN_GRAFFITIES_SUCCESS',
   ADMIN_GRAFFITIES_FAILURE = '@@graffities/ADMIN_GRAFFITIES_FAILURE',
+  EDIT_GRAFFITI_REQUEST = '@@graffities/EDIT_GRAFFITI_REQUEST',
+  EDIT_GRAFFITI_SUCCESS = '@@graffities/EDIT_GRAFFITI_SUCCESS',
+  EDIT_GRAFFITI_FAILURE = '@@graffities/EDIT_GRAFFITI_FAILURE',
 }
 
 export interface GraffitiesState {
   publicGraffities: Graffiti[]
   myGraffities: Graffiti[]
   createGraffiti: CreateGraffitiState
+  editGraffiti: EditGraffitiState
   graffiti: GraffitiWithPhotos
   adminGraffities: Graffiti[]
 }
@@ -58,14 +62,25 @@ export interface Rating {
   comment: string
 }
 
-
 export interface CreateGraffitiState {
+  readonly loading: boolean
+  readonly errors?: FieldError[]
+}
+
+export interface EditGraffitiState {
   readonly loading: boolean
   readonly errors?: FieldError[]
 }
 
 export interface CreateGraffitiData {
   name: string
+  lat: number
+  lng: number
+}
+
+export interface EditGraffitiData {
+  name: string
+  description: string
   lat: number
   lng: number
 }

@@ -20,10 +20,8 @@ export function* createRatingRequest(
   }
 }
 
-export function* watchCreateRatingRequest() {
-  const { data, closeModal, updateGraffiti } = yield take(
-    RatingActionTypes.CREATE_RATING_REQUEST,
-  )
+export function* watchCreateRatingRequest(props) {
+  const { data, closeModal, updateGraffiti } = props
   yield call(createRatingRequest, data, closeModal, updateGraffiti)
 }
 

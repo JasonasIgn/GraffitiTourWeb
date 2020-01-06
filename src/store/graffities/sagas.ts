@@ -1,11 +1,10 @@
 import Router from 'next/router'
-import { put, call, takeEvery, take } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import * as actions from './actions'
 import { api } from '../../utils/api'
 import config from '../../config'
 import { GraffitiActionTypes } from './types'
 import { pages } from '../../components'
-
 
 export function* myGraffitiesRequest() {
   try {
@@ -38,7 +37,6 @@ export function* adminGraffitiesRequest(setState) {
   }
 }
 
-
 export function* createGraffitiRequest(createGraffitiData) {
   try {
     yield call(api, config.apiMethods.POST, 'graffittis', createGraffitiData)
@@ -47,6 +45,16 @@ export function* createGraffitiRequest(createGraffitiData) {
   } catch (e) {
     const errors = yield e
     yield put(actions.createGraffitiFailure(errors))
+  }
+}
+
+export function* editGraffitiRequest(editGraffitiData, id) {
+  try {
+    yield call(api, config.apiMethods.PUT, `graffittis/${id}`, editGraffitiData)
+    yield put(actions.editGraffitiSuccess())
+  } catch (e) {
+    const errors = yield e
+    yield put(actions.editGraffitiFailure(errors))
   }
 }
 
@@ -60,36 +68,54 @@ export function* graffitiRequest(id) {
   }
 }
 
-
 export function* watchMyGraffitiesRequest() {
   yield call(myGraffitiesRequest)
 }
 
-export function* watchAdminGraffitiesRequest() {
-  const { setState } = yield take(GraffitiActionTypes.ADMIN_GRAFFITIES_REQUEST)
+export function* watchAdminGraffitiesRequest(props) {
+  const { setState } = props
   yield call(adminGraffitiesRequest, setState)
 }
 
-
-export function* watchGraffitiRequest() {
-  const { id } = yield take(GraffitiActionTypes.GRAFFITI_REQUEST)
+export function* watchGraffitiRequest(props) {
+  const { id } = props
   yield call(graffitiRequest, id)
 }
-
 
 export function* watchGraffitiesRequest() {
   yield call(graffitiesRequest)
 }
 
-export function* watchCreateGraffitiRequest() {
-  const { data } = yield take(GraffitiActionTypes.CREATE_GRAFFITI_REQUEST)
+export function* watchCreateGraffitiRequest(props) {
+  const { data } = props
   yield call(createGraffitiRequest, data)
+}
+
+export function* watchEditGraffitiRequest(props) {
+  const { data, id } = props
+  yield call(editGraffitiRequest, data, id)
 }
 
 export default function*() {
   yield takeEvery(GraffitiActionTypes.GRAFFITI_REQUEST, watchGraffitiRequest)
-  yield takeEvery(GraffitiActionTypes.MY_GRAFFITIES_REQUEST, watchMyGraffitiesRequest)
-  yield takeEvery(GraffitiActionTypes.CREATE_GRAFFITI_REQUEST, watchCreateGraffitiRequest)
-  yield takeEvery(GraffitiActionTypes.GRAFFITIES_REQUEST, watchGraffitiesRequest)
-  yield takeEvery(GraffitiActionTypes.ADMIN_GRAFFITIES_REQUEST, watchAdminGraffitiesRequest)
+  yield takeEvery(
+    GraffitiActionTypes.MY_GRAFFITIES_REQUEST,
+    watchMyGraffitiesRequest,
+  )
+  yield takeEvery(
+    GraffitiActionTypes.CREATE_GRAFFITI_REQUEST,
+    watchCreateGraffitiRequest,
+  )
+  yield takeEvery(
+    GraffitiActionTypes.GRAFFITIES_REQUEST,
+    watchGraffitiesRequest,
+  )
+  yield takeEvery(
+    GraffitiActionTypes.ADMIN_GRAFFITIES_REQUEST,
+    watchAdminGraffitiesRequest,
+  )
+  yield takeEvery(
+    GraffitiActionTypes.EDIT_GRAFFITI_REQUEST,
+    watchEditGraffitiRequest,
+  )
 }

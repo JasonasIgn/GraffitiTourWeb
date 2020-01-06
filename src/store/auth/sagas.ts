@@ -21,8 +21,8 @@ export function* loginRequest(data) {
   }
 }
 
-export function* watchLoginRequest() {
-  const { data } = yield take(AuthActionTypes.LOGIN_REQUEST)
+export function* watchLoginRequest(props) {
+  const { data } = props
   yield call(loginRequest, data)
 }
 

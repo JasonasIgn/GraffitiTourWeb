@@ -1,4 +1,10 @@
-import { UserActionTypes, ProfileData, RegisterData, AdminUser } from './types'
+import {
+  UserActionTypes,
+  ProfileData,
+  RegisterData,
+  AdminUser,
+  UserEditData,
+} from './types'
 import { FieldError } from '../general/types'
 
 export const profileRequest = () => ({
@@ -50,8 +56,8 @@ export const adminUsersRequestFailure = (errors: FieldError[]) => ({
 })
 
 export const adminUserRequest = id => ({
-  type: UserActionTypes.ADMIN_USER_REQUEST,
-  id: id,
+    type: UserActionTypes.ADMIN_USER_REQUEST,
+    id: id,
 })
 export const adminUserRequestSuccess = (data: AdminUser) => ({
   type: UserActionTypes.ADMIN_USER_SUCCESS,
@@ -59,5 +65,18 @@ export const adminUserRequestSuccess = (data: AdminUser) => ({
 })
 export const adminUserRequestFailure = (errors: FieldError[]) => ({
   type: UserActionTypes.ADMIN_USER_FAILURE,
+  errors,
+})
+
+export const adminUserEditRequest = (user: UserEditData, id) => ({
+  type: UserActionTypes.ADMIN_USER_EDIT_REQUEST,
+  user: user,
+  id: id,
+})
+export const adminUserEditRequestSuccess = () => ({
+  type: UserActionTypes.ADMIN_USER_EDIT_SUCCESS,
+})
+export const adminUserEditRequestFailure = (errors: FieldError[]) => ({
+  type: UserActionTypes.ADMIN_USER_EDIT_FAILURE,
   errors,
 })

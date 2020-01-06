@@ -31,4 +31,8 @@ export const pages = {
     path: '/admin',
     title: 'Admin panel',
   },
+  editUser: {
+    path: '/admin/edit-user',
+    title: 'Edit user',
+  },
 }

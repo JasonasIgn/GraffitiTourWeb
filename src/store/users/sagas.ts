@@ -1,4 +1,4 @@
-import { put, call, takeEvery, take } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import Router from 'next/router'
 import * as actions from './actions'
 import { api } from '../../utils/api'
@@ -50,9 +50,24 @@ export function* registerRequest(data) {
   }
 }
 
-export function* watchAdminUserRequest() {
-  const { id } = yield take(UserActionTypes.ADMIN_USER_REQUEST)
+export function* adminUserEditRequest(data, id) {
+  try {
+    yield call(api, config.apiMethods.PUT, `users/${id}`, data)
+    yield put(actions.adminUserEditRequestSuccess())
+  } catch (e) {
+    const errors = yield e
+    yield put(actions.adminUserEditRequestFailure(errors))
+  }
+}
+
+export function* watchAdminUserRequest(props) {
+  const { id } = props
   yield call(adminUserRequest, id)
+}
+
+export function* watchAdminUserEditRequest(props) {
+  const { user, id } = props
+  yield call(adminUserEditRequest, user, id)
 }
 
 export function* watchLogoutRequest() {
@@ -70,8 +85,8 @@ export function* adminUsersRequest(setState) {
   }
 }
 
-export function* watchAdminUsersRequest() {
-  const { setState } = yield take(UserActionTypes.ADMIN_USERS_REQUEST)
+export function* watchAdminUsersRequest(props) {
+  const { setState } = props
   yield call(adminUsersRequest, setState)
 }
 
@@ -79,12 +94,16 @@ export function* watchProfileRequest() {
   yield call(profileRequest)
 }
 
-export function* watchRegisterRequest() {
-  const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
+export function* watchRegisterRequest(props) {
+  const { data } = props
   yield call(registerRequest, data)
 }
 
 export default function*() {
+  yield takeEvery(
+    UserActionTypes.ADMIN_USER_EDIT_REQUEST,
+    watchAdminUserEditRequest,
+  )
   yield takeEvery(UserActionTypes.PROFILE_REQUEST, watchProfileRequest)
   yield takeEvery(UserActionTypes.LOGOUT_REQUEST, watchLogoutRequest)
   yield takeEvery(UserActionTypes.REGISTER_REQUEST, watchRegisterRequest)
