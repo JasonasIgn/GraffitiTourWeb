@@ -56,7 +56,7 @@ const mapStateToProps = ({ users }: ApplicationState) => ({
 
 const mapDispatchToProps = dispatch => ({
   adminUserEditRequest: (userEditData, id) =>
-    adminUserEditRequest(userEditData, id),
+    dispatch(adminUserEditRequest(userEditData, id)),
 })
 
 export const EditUserForm = connect(

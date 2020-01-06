@@ -52,7 +52,7 @@ export function* registerRequest(data) {
 
 export function* adminUserEditRequest(data, id) {
   try {
-    yield call(api, config.apiMethods.POST, `users/${id}`, data)
+    yield call(api, config.apiMethods.PUT, `users/${id}`, data)
     yield put(actions.adminUserEditRequestSuccess())
   } catch (e) {
     const errors = yield e
