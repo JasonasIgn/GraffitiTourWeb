@@ -32,6 +32,7 @@ const CreateGraffitiFormContainerComponent: React.FunctionComponent<
       description: values.description,
       lat: values.position.lat,
       lng: values.position.lng,
+      uploads: values.uploads,
     }
     createGraffitiRequest(createGraffitiData)
   }

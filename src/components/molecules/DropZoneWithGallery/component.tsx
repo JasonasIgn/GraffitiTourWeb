@@ -69,12 +69,13 @@ export class DropZoneWithGalleryComponent extends React.Component<
       form: { setFieldValue },
     } = this.props
     const { uploadList } = this.state
+    const newList = [...uploadList, ...data]
     this.setState(
       {
-        uploadList: [...uploadList, ...data],
+        uploadList: newList,
       },
       () => {
-        setFieldValue('uploads', uploadList)
+        setFieldValue('uploads', newList)
       },
     )
   }
