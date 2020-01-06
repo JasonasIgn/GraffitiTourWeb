@@ -7,6 +7,7 @@ export const initialState: GraffitiesState = {
     loading: false,
     errors: undefined,
   },
+  graffiti: null,
 }
 
 export const graffitiReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ export const graffitiReducer = (state = initialState, action) => {
       return {
         ...state,
         myGraffities: action.data,
+      }
+    case GraffitiActionTypes.GRAFFITI_SUCCESS:
+      return {
+        ...state,
+        graffiti: action.data,
       }
     case GraffitiActionTypes.CREATE_GRAFFITI_REQUEST:
       return { ...state, createGraffiti: { loading: true, errors: undefined } }

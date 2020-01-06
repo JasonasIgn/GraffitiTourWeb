@@ -10,21 +10,41 @@ export enum GraffitiActionTypes {
   GRAFFITIES_REQUEST = '@@graffities/GRAFFITIES_REQUEST',
   GRAFFITIES_SUCCESS = '@@graffities/GRAFFITIES_SUCCESS',
   GRAFFITIES_FAILURE = '@@graffities/GRAFFITIES_FAILURE',
+  GRAFFITI_REQUEST = '@@graffities/GRAFFITI_REQUEST',
+  GRAFFITI_SUCCESS = '@@graffities/GRAFFITI_SUCCESS',
+  GRAFFITI_FAILURE = '@@graffities/GRAFFITI_FAILURE',
 }
 
 export interface GraffitiesState {
   publicGraffities: Graffiti[]
   myGraffities: Graffiti[]
   createGraffiti: CreateGraffitiState
+  graffiti: GraffitiWithPhotos
 }
 
 export interface Graffiti {
   id: number
   name: string
-  latitude: number
-  longtitude: number
+  lat: number
+  lng: number
   created_at: Date
+  description: string
 }
+
+export interface GraffitiWithPhotos {
+  id: number
+  name: string
+  lat: number
+  lng: number
+  description: string
+  created_at: Date
+  photos: Photo[]
+}
+
+export interface Photo {
+  id: number
+}
+
 
 export interface CreateGraffitiState {
   readonly loading: boolean
@@ -33,6 +53,6 @@ export interface CreateGraffitiState {
 
 export interface CreateGraffitiData {
   name: string
-  latitude: number
-  longtitude: number
+  lat: number
+  lng: number
 }

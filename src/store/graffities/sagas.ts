@@ -39,10 +39,26 @@ export function* createGraffitiRequest(createGraffitiData) {
   }
 }
 
+export function* graffitiRequest(id) {
+  try {
+    const payload = yield call(api, config.apiMethods.GET, `graffittis/${id}`)
+    yield put(actions.graffitiRequestSuccess(payload))
+  } catch (e) {
+    const errors = yield e
+    yield put(actions.graffitiRequestFailure(errors))
+  }
+}
+
 
 export function* watchMyGraffitiesRequest() {
   yield call(myGraffitiesRequest)
 }
+
+export function* watchGraffitiRequest() {
+  const { id } = yield take(GraffitiActionTypes.GRAFFITI_REQUEST)
+  yield call(graffitiRequest, id)
+}
+
 
 export function* watchGraffitiesRequest() {
   yield call(graffitiesRequest)
@@ -54,6 +70,7 @@ export function* watchCreateGraffitiRequest() {
 }
 
 export default function*() {
+  yield takeEvery(GraffitiActionTypes.GRAFFITI_REQUEST, watchGraffitiRequest)
   yield takeEvery(GraffitiActionTypes.MY_GRAFFITIES_REQUEST, watchMyGraffitiesRequest)
   yield takeEvery(GraffitiActionTypes.CREATE_GRAFFITI_REQUEST, watchCreateGraffitiRequest)
   yield takeEvery(GraffitiActionTypes.GRAFFITIES_REQUEST, watchGraffitiesRequest)

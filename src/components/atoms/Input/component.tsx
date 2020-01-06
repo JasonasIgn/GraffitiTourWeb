@@ -19,12 +19,6 @@ export const Input = ({
       ) : (
         <input {...field} {...props} type={type} title={label} />
       )}
-      {/* {React.createElement(type === 'textarea' ? 'textarea' : 'input', {
-        ...field,
-        ...props,
-        type,
-        title: label,
-      })} */}
       <style jsx>
         {`
           input, textarea {

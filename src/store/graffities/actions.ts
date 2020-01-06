@@ -36,3 +36,16 @@ export const graffitiesFailure = (errors: FieldError[]) => ({
   type: GraffitiActionTypes.GRAFFITIES_FAILURE,
   errors,
 })
+
+export const graffitiRequest = id => ({
+  type: GraffitiActionTypes.GRAFFITI_REQUEST,
+  id: id,
+})
+export const graffitiRequestSuccess = (data: Graffiti[]) => ({
+  type: GraffitiActionTypes.GRAFFITI_SUCCESS,
+  data,
+})
+export const graffitiRequestFailure = (errors: FieldError[]) => ({
+  type: GraffitiActionTypes.GRAFFITI_FAILURE,
+  errors,
+})

@@ -23,7 +23,6 @@ export class GoogleMaps extends React.Component<any, any> {
   }
 
   onMarkerClick = graffiti => props => {
-    console.log(props)
     this.setState({
       selectedGraffiti: graffiti,
       position: { lat: graffiti.lat, lng: graffiti.lng },
@@ -43,7 +42,6 @@ export class GoogleMaps extends React.Component<any, any> {
 
   render() {
     const { showingInfoWindow, selectedGraffiti, position } = this.state
-    console.log(showingInfoWindow)
     return (
       <GoogleMapsComponent
         {...this.props}
@@ -80,12 +78,14 @@ const GoogleMapsComponent = compose(
     onMarkerClick,
     onInfoWindowClose,
     position,
+    defaultZoom,
+    defaultCenter,
   }) => {
     return (
       <GoogleMap
         onClick={onMapClick}
-        defaultZoom={8}
-        defaultCenter={{ lat: 54.687157, lng: 25.279652 }}>
+        defaultZoom={defaultZoom || 8}
+        defaultCenter={defaultCenter || { lat: 54.687157, lng: 25.279652 }}>
         {markers &&
           markers.map(
             markerInfo =>
