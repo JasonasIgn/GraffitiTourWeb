@@ -9,7 +9,13 @@ import {
   CheckboxField,
 } from '../..'
 
-export const FormField = ({ type = null, name = '', label = '', ...props }) => {
+export const FormField = ({
+  type = null,
+  name = '',
+  label = '',
+  disabled = false,
+  ...props
+}) => {
   const chooseInput = () => {
     const inputType = {
       checkbox: CheckboxField,
@@ -21,7 +27,13 @@ export const FormField = ({ type = null, name = '', label = '', ...props }) => {
   }
   return (
     <div>
-      <Field type={type} label={label} name={name} component={chooseInput()} />
+      <Field
+        type={type}
+        disabled={disabled}
+        label={label}
+        name={name}
+        component={chooseInput()}
+      />
       <div className="inputErrorMessageWrapper">
         <FormikErrorMessage
           name={name}

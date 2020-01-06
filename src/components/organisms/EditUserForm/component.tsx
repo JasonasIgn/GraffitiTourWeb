@@ -15,7 +15,7 @@ export const EditUserFormComponent: React.FunctionComponent<EditUserFormProps> =
   return (
     <div className="user-edit-form-wrapper">
       <Form className="user-edit-form">
-        <FormField name="email" label="Email" />
+        <FormField name="email" label="Email" disabled/>
         <FormField name="username" label="Username" />
         <div className="button-wrapper">
           <Button type="submit"> Edit </Button>

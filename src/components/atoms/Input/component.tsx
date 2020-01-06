@@ -9,6 +9,7 @@ export const Input = ({
   form,
   type,
   label = '',
+  disabled = false,
   ...props
 }) => {
   return (
@@ -17,7 +18,7 @@ export const Input = ({
       {type === 'textarea' ? (
         <textarea {...field} {...props} title={label} />
       ) : (
-        <input {...field} {...props} type={type} title={label} />
+        <input {...field} {...props} type={type} title={label} disabled={disabled}/>
       )}
       <style jsx>
         {`
