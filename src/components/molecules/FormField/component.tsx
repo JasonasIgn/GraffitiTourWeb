@@ -1,9 +1,13 @@
 import React from 'react'
 import { Field, ErrorMessage as FormikErrorMessage } from 'formik'
-import { Input, ErrorMessage } from '../..'
-import { CheckboxField } from '../CheckboxField/component'
-import { GoogleMapsField } from '../GoogleMapsField'
-import { DropZoneWithGallery } from '../DropZoneWithGallery'
+import {
+  Input,
+  ErrorMessage,
+  StarRatingField,
+  GoogleMapsField,
+  DropZoneWithGallery,
+  CheckboxField,
+} from '../..'
 
 export const FormField = ({ type = null, name = '', label = '', ...props }) => {
   const chooseInput = () => {
@@ -11,6 +15,7 @@ export const FormField = ({ type = null, name = '', label = '', ...props }) => {
       checkbox: CheckboxField,
       googleMaps: GoogleMapsField,
       dropzoneWithGallery: DropZoneWithGallery,
+      starRating: StarRatingField,
     }
     return inputType[type] || Input
   }

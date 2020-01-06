@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { ViewGraffitiPageComponent } from '.'
 import { ApplicationState } from '../../../store'
 import { graffitiRequest } from '../../../store/graffities/actions'
+import { createRatingRequest } from '../../../store/ratings/actions'
 import { GraffitiWithPhotos } from '../../../store/graffities/types'
 
 interface PropsFromDispatch {

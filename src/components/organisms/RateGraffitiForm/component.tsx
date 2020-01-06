@@ -5,42 +5,30 @@ import { getError } from '../../../utils'
 import { color } from '../../../theme'
 import { CreateGraffitiState } from '../../../store/graffities/types'
 
-interface CreateGraffitiFormProps {
-  graffiti: CreateGraffitiState,
+interface CreateRatingFormProps {
+  createRating: CreateGraffitiState,
 }
 
-export const RateGraffitiFormComponent: React.FunctionComponent<
-  CreateGraffitiFormProps
-> = ({ graffiti }) => {
+export const CreateRatingFormComponent: React.FunctionComponent<
+CreateRatingFormProps
+> = ({ createRating }) => {
   return (
-    <div className="create-graffiti-form-wrapper">
-      <h1>Create graffiti</h1>
+    <div className="create-rating-form-wrapper">
       <Form className="create-graffiti-form">
-        <FormField name="position" label="Position" type="googleMaps"/>
-        <FormField name="name" label="Name" />
-        <FormField type="textarea" name="description" label="Description" />
-        <FormField type="dropzoneWithGallery" name="uploads" label="Photo" />
+        <FormField type="textarea" name="comment" label="Comment" />
         <div className="button-wrapper">
-          <Button type="submit"> Create </Button>
+          <Button type="submit"> Rate </Button>
         </div>
         <div className="error-wrapper">
-          <ErrorMessage>{getError(graffiti.errors)}</ErrorMessage>
+          <ErrorMessage>{getError(createRating.errors)}</ErrorMessage>
         </div>
       </Form>
       <style jsx>
         {`
-          .create-graffiti-form-wrapper {
-            max-width: 500px;
+          .create-rating-form-wrapper {
             width: 100%;
             border-radius: 8px;
-            background-image: linear-gradient(
-              to bottom right,
-              ${color('grey', 600)},
-              ${color('grey', 800)}
-            );
             height: max-content;
-            box-shadow: 20px 20px 40px black;
-            padding: 40px;
             margin-bottom: auto;
             margin-top: auto;
           }

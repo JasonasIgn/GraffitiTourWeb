@@ -7,6 +7,7 @@ import config from '../../../config'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
 import { Table, Modal } from '../../molecules'
+import { CreateRatingForm } from '../../organisms/RateGraffitiForm'
 
 interface Props {
   graffiti: GraffitiWithPhotos
@@ -119,11 +120,10 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
               open={ratingModalOpen}
               transition
               handleModalClose={() => setRatingModalOpen(false)}>
-              {/* <DepositMoneyFormContainer
-                depositCallback={setTicketsTrigger}
-                suggestedAmount={suggestedDepositAmount}
-              /> */}
-              <div>prasau veik ;(</div>
+              <CreateRatingForm
+                graffitiId={graffiti.id}
+                closeModal={() => setRatingModalOpen(false)}
+              />
             </Modal>
           </div>
           <hr />

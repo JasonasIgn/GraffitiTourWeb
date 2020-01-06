@@ -1,63 +1,59 @@
 import React from 'react'
 import { Formik } from 'formik'
 import { connect } from 'react-redux'
-import { CreateGraffitiFormComponent } from '.'
+import { CreateRatingFormComponent } from '.'
 import { ApplicationState } from '../../../store'
-import { createGraffitiRequest } from '../../../store/graffities/actions'
-import { CreateGraffitiState } from '../../../store/graffities/types'
+import { createRatingRequest } from '../../../store/ratings/actions'
+import { CreateRatingState } from '../../../store/ratings/types'
 
 interface PropsFromDispatch {
-  createGraffitiRequest: typeof createGraffitiRequest
+  createRatingRequest: typeof createRatingRequest
 }
 
 interface PropsFromState {
-  graffiti: CreateGraffitiState
+  createRating: CreateRatingState
+  graffitiId: number
+  closeModal: Function
 }
 
 type AllProps = PropsFromState & PropsFromDispatch
 
 const initialValues = {
-  name: 'testas',
-  description: 'descirption',
-  position: {},
-  uploads: [],
-  thumbnail: null,
+  comment: '',
+  rating: 0,
 }
 
-const CreateGraffitiFormContainerComponent: React.FunctionComponent<
-  AllProps
-> = ({ createGraffitiRequest, graffiti }) => {
+const CreateRatingFormContainerComponent: React.FunctionComponent<AllProps> = ({
+  createRatingRequest,
+  createRating,
+  graffitiId,
+  closeModal,
+}) => {
   const onSubmit = async values => {
     const createGraffitiData = {
-      name: values.name,
-      description: values.description,
-      lat: values.position.lat,
-      lng: values.position.lng,
-      uploads: values.uploads,
-      thumbnail: values.thumbnail,
+      comment: values.comment,
+      rating: values.rating,
+      graffiti_id: graffitiId,
     }
-    createGraffitiRequest(createGraffitiData)
+    createRatingRequest(createGraffitiData, closeModal)
   }
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues}>
-      <CreateGraffitiFormComponent graffiti={graffiti} />
+      <CreateRatingFormComponent createRating={createRating} />
     </Formik>
   )
 }
 
-const mapStateToProps = ({ graffiti }: ApplicationState) => ({
-  graffiti: {
-    loading: graffiti.createGraffiti.loading,
-    errors: graffiti.createGraffiti.errors,
-  },
+const mapStateToProps = ({ rating }: ApplicationState) => ({
+  createRating: rating.createRating,
 })
 
 const mapDispatchToProps = dispatch => ({
-  createGraffitiRequest: createGraffitiData =>
-    dispatch(createGraffitiRequest(createGraffitiData)),
+  createRatingRequest: (data, closeModal) =>
+    dispatch(createRatingRequest(data, closeModal)),
 })
 
-export const CreateGraffitiForm = connect(
+export const CreateRatingForm = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(CreateGraffitiFormContainerComponent)
+)(CreateRatingFormContainerComponent)
