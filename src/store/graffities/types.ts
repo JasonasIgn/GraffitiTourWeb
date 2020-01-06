@@ -36,6 +36,8 @@ export interface GraffitiWithPhotos {
   name: string
   lat: number
   lng: number
+  totalRating: number
+  totalRated: number
   description: string
   created_at: Date
   photos: Photo[]

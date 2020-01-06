@@ -2,6 +2,7 @@ import React from 'react'
 import { get } from 'lodash'
 import { PhotosSlider, Image, GoogleMaps } from '../..'
 import { GraffitiWithPhotos } from '../../../store/graffities/types'
+import StarRating from 'react-star-rating-component'
 import config from '../../../config'
 import { color } from '../../../theme'
 
@@ -25,6 +26,15 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
   return (
     graffiti && (
       <div className="pageWrapper">
+        <div className="starRatingWrapper">
+          <StarRating
+            starCount={5}
+            value={graffiti.totalRating / graffiti.totalRated}
+            emptyStarColor={color('light', 300)}
+          />
+          <div>{`(${graffiti.totalRating / graffiti.totalRated}/5)`}</div>
+        </div>
+
         <div className="upperContent">
           <div className="sliderWrapper">
             <PhotosSlider
@@ -71,14 +81,31 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
         </div>
         <style jsx>
           {`
+            .starRatingWrapper {
+              position: absolute;
+              top: 5px;
+              right: 15px;
+              display: flex;
+              align-items: center;
+              font-size: 24px;
+            }
+            .starRatingWrapper div {
+              font-size: 13px;
+              margin-top: 4px;
+              color: ${color('light', 300)};
+            }
+            label {
+              font-size: 18px;
+            }
             .sliderWrapper {
               width: 500px;
               height: max-content;
             }
             .rightContent {
-                margin-left: 10px;
+              margin-left: 10px;
             }
             .pageWrapper {
+              position: relative;
               display: flex;
               flex-direction: column;
               padding: 30px;
