@@ -21,6 +21,7 @@ const initialValues = {
   description: 'descirption',
   position: {},
   uploads: [],
+  thumbnail: null,
 }
 
 const CreateGraffitiFormContainerComponent: React.FunctionComponent<
@@ -33,6 +34,7 @@ const CreateGraffitiFormContainerComponent: React.FunctionComponent<
       lat: values.position.lat,
       lng: values.position.lng,
       uploads: values.uploads,
+      thumbnail: values.thumbnail,
     }
     createGraffitiRequest(createGraffitiData)
   }

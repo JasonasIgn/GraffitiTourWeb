@@ -1,12 +1,63 @@
+import React from 'react'
 import {
   GoogleMap,
   Marker,
   withGoogleMap,
   withScriptjs,
+  InfoWindow,
 } from 'react-google-maps'
 import { compose, withProps } from 'recompose'
+import { Image } from '../..'
+import config from '../../../config'
+import { Button } from '../../atoms'
+import { pages } from '../../pages'
 
-export const GoogleMaps = compose(
+export class GoogleMaps extends React.Component<any, any> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showingInfoWindow: false,
+      position: {},
+      selectedGraffiti: {},
+    }
+  }
+
+  onMarkerClick = graffiti => props => {
+    console.log(props)
+    this.setState({
+      selectedGraffiti: graffiti,
+      position: { lat: graffiti.lat, lng: graffiti.lng },
+      showingInfoWindow: true,
+    })
+  }
+
+  onInfoWindowClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        selectedGraffiti: null,
+        position: null,
+      })
+    }
+  }
+
+  render() {
+    const { showingInfoWindow, selectedGraffiti, position } = this.state
+    console.log(showingInfoWindow)
+    return (
+      <GoogleMapsComponent
+        {...this.props}
+        selectedGraffiti={selectedGraffiti}
+        showingInfoWindow={showingInfoWindow}
+        position={position}
+        onMarkerClick={this.props.publicMode ? this.onMarkerClick : () => {}}
+        onInfoWindowClose={this.onInfoWindowClose}
+      />
+    )
+  }
+}
+
+const GoogleMapsComponent = compose(
   withProps(({ containerStyles }) => {
     return {
       googleMapURL:
@@ -18,25 +69,67 @@ export const GoogleMaps = compose(
   }),
   withScriptjs,
   withGoogleMap,
-)(({ clickable, markers = [], onMapClick }) => {
-  return (
-    <GoogleMap
-      onClick={onMapClick}
-      defaultZoom={8}
-      defaultCenter={{ lat: 54.687157, lng: 25.279652 }}>
-      {markers &&
-        markers.map(
-          markerInfo =>
-            markerInfo && (
-              <Marker
-                key={`${markerInfo.lat}-${markerInfo.lng}`}
-                position={{
-                  lat: markerInfo.lat,
-                  lng: markerInfo.lng,
-                }}
-              />
-            ),
-        )}
-    </GoogleMap>
-  )
-})
+)(
+  ({
+    clickable,
+    markers = [],
+    onMapClick,
+    showingInfoWindow,
+    selectedGraffiti,
+    publicMode = false,
+    onMarkerClick,
+    onInfoWindowClose,
+    position,
+  }) => {
+    return (
+      <GoogleMap
+        onClick={onMapClick}
+        defaultZoom={8}
+        defaultCenter={{ lat: 54.687157, lng: 25.279652 }}>
+        {markers &&
+          markers.map(
+            markerInfo =>
+              markerInfo && (
+                <Marker
+                  clickable
+                  onClick={onMarkerClick(markerInfo)}
+                  key={`${markerInfo.lat}-${markerInfo.lng}`}
+                  position={{
+                    lat: markerInfo.lat,
+                    lng: markerInfo.lng,
+                  }}>
+                  {showingInfoWindow &&
+                    publicMode &&
+                    selectedGraffiti.id === markerInfo.id && (
+                      <InfoWindow
+                        onCloseClick={onInfoWindowClose}
+                        position={position}>
+                        <div className="infoWindowWrapper">
+                          <h3>{selectedGraffiti.name}</h3>
+                          <Image
+                            width="100px"
+                            src={`${config.apiUrl}/photo/${markerInfo.thumbnail}`}
+                          />
+                          <Button
+                            style={{ height: 30, marginTop: 10 }}
+                            to={`${pages.graffiti.path}/${markerInfo.id}`}>
+                            View
+                          </Button>
+                        </div>
+                      </InfoWindow>
+                    )}
+                </Marker>
+              ),
+          )}
+        <style jsx>
+          {`
+            .infoWindowWrapper {
+              display: flex;
+              flex-direction: column;
+            }
+          `}
+        </style>
+      </GoogleMap>
+    )
+  },
+)

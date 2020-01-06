@@ -23,4 +23,8 @@ export const pages = {
     path: '/create-graffiti',
     title: 'Create Graffiti',
   },
+  graffiti: {
+    path: '/graffiti',
+    title: 'View graffiti',
+  },
 }
