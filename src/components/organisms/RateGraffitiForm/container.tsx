@@ -14,6 +14,7 @@ interface PropsFromState {
   createRating: CreateRatingState
   graffitiId: number
   closeModal: Function
+  graffitiRequest: Function
 }
 
 type AllProps = PropsFromState & PropsFromDispatch
@@ -28,6 +29,7 @@ const CreateRatingFormContainerComponent: React.FunctionComponent<AllProps> = ({
   createRating,
   graffitiId,
   closeModal,
+  graffitiRequest,
 }) => {
   const onSubmit = async values => {
     const createGraffitiData = {
@@ -35,7 +37,7 @@ const CreateRatingFormContainerComponent: React.FunctionComponent<AllProps> = ({
       rating: values.rating,
       graffiti_id: graffitiId,
     }
-    createRatingRequest(createGraffitiData, closeModal)
+    createRatingRequest(createGraffitiData, closeModal, graffitiRequest)
   }
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -49,8 +51,8 @@ const mapStateToProps = ({ rating }: ApplicationState) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createRatingRequest: (data, closeModal) =>
-    dispatch(createRatingRequest(data, closeModal)),
+  createRatingRequest: (data, closeModal, updateGraffiti) =>
+    dispatch(createRatingRequest(data, closeModal, updateGraffiti)),
 })
 
 export const CreateRatingForm = connect(

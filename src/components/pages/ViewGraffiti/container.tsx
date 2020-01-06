@@ -26,7 +26,12 @@ const ViewGraffitiPageContainerComponent: React.FunctionComponent<AllProps> = ({
   useEffect(() => {
     graffitiRequest(router.query.id)
   }, [])
-  return <ViewGraffitiPageComponent graffiti={graffiti} />
+  return (
+    <ViewGraffitiPageComponent
+      graffiti={graffiti}
+      graffitiRequest={() => graffitiRequest(router.query.id)}
+    />
+  )
 }
 
 const mapStateToProps = ({ graffiti }: ApplicationState) => ({

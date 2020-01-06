@@ -11,6 +11,7 @@ import { CreateRatingForm } from '../../organisms/RateGraffitiForm'
 
 interface Props {
   graffiti: GraffitiWithPhotos
+  graffitiRequest: Function
 }
 
 const googleMapsContainerStyles = {
@@ -48,6 +49,7 @@ const rowStructure = rating => ({
 
 export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
   graffiti,
+  graffitiRequest,
 }) => {
   const [ratingModalOpen, setRatingModalOpen] = useState(false)
   return (
@@ -123,6 +125,7 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
               <CreateRatingForm
                 graffitiId={graffiti.id}
                 closeModal={() => setRatingModalOpen(false)}
+                graffitiRequest={graffitiRequest}
               />
             </Modal>
           </div>

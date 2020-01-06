@@ -4,9 +4,14 @@ import { api } from '../../utils/api'
 import config from '../../config'
 import { RatingActionTypes } from './types'
 
-export function* createRatingRequest(createGraffitiData, closeModal) {
+export function* createRatingRequest(
+  createGraffitiData,
+  closeModal,
+  updateGraffiti,
+) {
   try {
     yield call(api, config.apiMethods.POST, 'ratings', createGraffitiData)
+    updateGraffiti()
     closeModal()
     yield put(actions.createRatingSuccess())
   } catch (e) {
@@ -16,8 +21,10 @@ export function* createRatingRequest(createGraffitiData, closeModal) {
 }
 
 export function* watchCreateRatingRequest() {
-  const { data, closeModal } = yield take(RatingActionTypes.CREATE_RATING_REQUEST)
-  yield call(createRatingRequest, data, closeModal)
+  const { data, closeModal, updateGraffiti } = yield take(
+    RatingActionTypes.CREATE_RATING_REQUEST,
+  )
+  yield call(createRatingRequest, data, closeModal, updateGraffiti)
 }
 
 export default function*() {
