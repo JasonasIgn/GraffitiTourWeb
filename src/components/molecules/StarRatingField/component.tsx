@@ -12,7 +12,7 @@ export const StarRatingField = ({
   form,
   ...props
 }) => (
-  <Flex direction="row" alignItems="center" alignContent="auto" margin="auto">
+  <div className="ratingFieldWrapper">
     {label && (
       <div className="labelWrapper">
         <label htmlFor={name || field.name}>{label}</label>
@@ -20,6 +20,7 @@ export const StarRatingField = ({
       </div>
     )}
     <StarRating
+      emptyStarColor={color('light', 600)}
       onStarClick={val => {
         const { setFieldValue } = form
         setFieldValue(name || field.name, val)
@@ -36,6 +37,15 @@ export const StarRatingField = ({
 
     <style jsx>
       {`
+        .ratingFieldWrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          margin: auto;
+          font-size: 46px;
+        }
         .labelWrapper {
           padding-left: 10px;
           text-align: left;
@@ -45,5 +55,5 @@ export const StarRatingField = ({
         }
       `}
     </style>
-  </Flex>
+  </div>
 )

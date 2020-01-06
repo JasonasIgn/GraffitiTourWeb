@@ -15,6 +15,7 @@ CreateRatingFormProps
   return (
     <div className="create-rating-form-wrapper">
       <Form className="create-graffiti-form">
+        <FormField type="starRating" name="rating" />
         <FormField type="textarea" name="comment" label="Comment" />
         <div className="button-wrapper">
           <Button type="submit"> Rate </Button>

@@ -62,9 +62,10 @@ export const ModalContent: React.FunctionComponent<ModalContentProps> = ({
           }
           .modalContentHeading {
             padding-top: 10px;
-            padding-bottom: 30px;
+            padding-bottom: 10px;
             font-weight: 800;
             font-size: 28px;
+            margin-bottom: 10px;
             text-align: center;
             color: ${color('light', 200)};
           }
