@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { get } from 'lodash'
 import { PhotosSlider, Image, GoogleMaps } from '../..'
 import { GraffitiWithPhotos } from '../../../store/graffities/types'
@@ -6,7 +6,7 @@ import StarRating from 'react-star-rating-component'
 import config from '../../../config'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
-import { Table } from '../../molecules'
+import { Table, Modal } from '../../molecules'
 
 interface Props {
   graffiti: GraffitiWithPhotos
@@ -48,11 +48,13 @@ const rowStructure = rating => ({
 export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
   graffiti,
 }) => {
+  const [ratingModalOpen, setRatingModalOpen] = useState(false)
   return (
     graffiti && (
       <div className="pageWrapper">
         <div className="starRatingWrapper">
           <StarRating
+            name="starRatingDisplay"
             starCount={5}
             value={graffiti.totalRating / graffiti.totalRated}
             emptyStarColor={color('light', 300)}
@@ -107,7 +109,22 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
         <div className="ratingsWrapper">
           <div className="ratingsUpperContainer">
             <h2>Latest ratings</h2>
-            <Button>Rate</Button>
+            <Modal
+              maxWidth="550px"
+              maxHeight="90%"
+              minHeight="300px"
+              height="auto"
+              trigger={<Button>Rate</Button>}
+              title="Rate graffiti"
+              open={ratingModalOpen}
+              transition
+              handleModalClose={() => setRatingModalOpen(false)}>
+              {/* <DepositMoneyFormContainer
+                depositCallback={setTicketsTrigger}
+                suggestedAmount={suggestedDepositAmount}
+              /> */}
+              <div>prasau veik ;(</div>
+            </Modal>
           </div>
           <hr />
           <div className="tableWrapper">
