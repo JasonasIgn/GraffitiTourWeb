@@ -1,5 +1,4 @@
 import React from 'react'
-import { get } from 'lodash'
 import { color } from '../../../theme'
 import { Flex, Image } from '../..'
 import { images } from '../../../utils'

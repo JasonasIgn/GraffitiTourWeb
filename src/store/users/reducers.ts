@@ -11,6 +11,7 @@ export const initialState: UsersState = {
     loading: false,
   },
   adminUsers: [],
+  adminUser: undefined,
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -28,6 +29,11 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: initialState.profile,
+      }
+    case UserActionTypes.ADMIN_USER_SUCCESS:
+      return {
+        ...state,
+        adminUser: action.data,
       }
     case UserActionTypes.REGISTER_REQUEST:
       return { ...state, register: { loading: true, errors: undefined } }
