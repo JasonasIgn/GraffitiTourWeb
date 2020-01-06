@@ -10,6 +10,9 @@ export enum UserActionTypes {
   REGISTER_REQUEST = '@@users/REGISTER_REQUEST',
   REGISTER_SUCCESS = '@@users/REGISTER_SUCCESS',
   REGISTER_FAILURE = '@@users/REGISTER_FAILURE',
+  ADMIN_USERS_REQUEST = '@@users/ADMIN_USERS_REQUEST',
+  ADMIN_USERS_SUCCESS = '@@users/ADMIN_USERS_SUCCESS',
+  ADMIN_USERS_FAILURE = '@@users/ADMIN_USERS_FAILURE',
 }
 export interface ProfileData {
   username: string
@@ -35,4 +38,12 @@ export interface RegisterState {
 export interface UsersState {
   register: RegisterState
   profile: ProfileData
+  adminUsers: AdminUser[]
+}
+
+export interface AdminUser {
+  username: string
+  email: string
+  created_at: string
+  roles: Role[]
 }

@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import Router from 'next/router'
 import { AdminPanelPageComponent } from '.'
 import { ApplicationState } from '../../../store'
-import { ProfileData, Role } from '../../../store/users/types'
+import { ProfileData } from '../../../store/users/types'
 import config from '../../../config'
 import { pages } from '../pagesConfig'
 import { Homepage } from '../homepage'
+import { adminUsersRequest } from '../../../store/users/actions'
+import { adminGraffitiesRequest } from '../../../store/graffities/actions'
 
 interface PropsFromDispatch {}
 
@@ -20,7 +22,14 @@ interface test {
 
 type AllProps = PropsFromDispatch & PropsFromState
 
-const AdminPanelPageContainerComponent: any = ({ profile, isServer }) => {
+const AdminPanelPageContainerComponent: any = ({
+  profile,
+  isServer,
+  adminUsers,
+  adminGraffities,
+  adminUsersRequest,
+  adminGraffitiesRequest,
+}) => {
   if (isServer) return <Homepage />
   if (
     !(
@@ -30,19 +39,31 @@ const AdminPanelPageContainerComponent: any = ({ profile, isServer }) => {
   ) {
     Router.push(pages.homepage.path)
   }
-  return <AdminPanelPageComponent />
+  return (
+    <AdminPanelPageComponent
+      adminUsersRequest={adminUsersRequest}
+      adminUsers={adminUsers}
+      adminGraffitiesRequest={adminGraffitiesRequest}
+      adminGraffities={adminGraffities}
+    />
+  )
 }
 
 AdminPanelPageContainerComponent.getInitialProps = async ({ isServer }) => {
   return { isServer: isServer }
 }
 
-const mapStateToProps = ({ users }: ApplicationState) => ({
+const mapStateToProps = ({ users, graffiti }: ApplicationState) => ({
   profile: users.profile,
+  adminUsers: users.adminUsers,
+  adminGraffities: graffiti.adminGraffities,
 })
 
-const mapDispatchToProps = null
-
+const mapDispatchToProps = dispatch => ({
+  adminUsersRequest: setState => dispatch(adminUsersRequest(setState)),
+  adminGraffitiesRequest: setState =>
+    dispatch(adminGraffitiesRequest(setState)),
+})
 export const AdminPanelPage = connect(
   mapStateToProps,
   mapDispatchToProps,

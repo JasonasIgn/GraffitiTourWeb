@@ -49,3 +49,16 @@ export const graffitiRequestFailure = (errors: FieldError[]) => ({
   type: GraffitiActionTypes.GRAFFITI_FAILURE,
   errors,
 })
+
+export const adminGraffitiesRequest = (setState: Function) => ({
+  type: GraffitiActionTypes.ADMIN_GRAFFITIES_REQUEST,
+  setState: setState,
+})
+export const adminGraffitiesSuccess = (data: Graffiti[]) => ({
+  type: GraffitiActionTypes.ADMIN_GRAFFITIES_SUCCESS,
+  data,
+})
+export const adminGraffitiesFailure = (errors: FieldError[]) => ({
+  type: GraffitiActionTypes.ADMIN_GRAFFITIES_FAILURE,
+  errors,
+})

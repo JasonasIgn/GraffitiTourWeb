@@ -8,6 +8,7 @@ export const initialState: GraffitiesState = {
     errors: undefined,
   },
   graffiti: null,
+  adminGraffities: [],
 }
 
 export const graffitiReducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ export const graffitiReducer = (state = initialState, action) => {
       return {
         ...state,
         publicGraffities: action.data,
+      }
+    case GraffitiActionTypes.ADMIN_GRAFFITIES_SUCCESS:
+      return {
+        ...state,
+        adminGraffities: action.data,
       }
     case GraffitiActionTypes.MY_GRAFFITIES_SUCCESS:
       return {

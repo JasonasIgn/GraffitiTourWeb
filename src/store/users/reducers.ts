@@ -10,6 +10,7 @@ export const initialState: UsersState = {
     errors: undefined,
     loading: false,
   },
+  adminUsers: [],
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -20,7 +21,7 @@ export const userReducer = (state = initialState, action) => {
         profile: {
           username: action.profile.username,
           email: action.profile.email,
-          roles: action.profile.roles
+          roles: action.profile.roles,
         },
       }
     case UserActionTypes.LOGOUT_SUCCESS:
@@ -34,6 +35,11 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, register: { loading: false } }
     case UserActionTypes.REGISTER_FAILURE:
       return { ...state, register: { loading: false, errors: action.errors } }
+    case UserActionTypes.ADMIN_USERS_SUCCESS:
+      return {
+        ...state,
+        adminUsers: action.data,
+      }
     default:
       return state
   }

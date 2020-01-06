@@ -13,6 +13,9 @@ export enum GraffitiActionTypes {
   GRAFFITI_REQUEST = '@@graffities/GRAFFITI_REQUEST',
   GRAFFITI_SUCCESS = '@@graffities/GRAFFITI_SUCCESS',
   GRAFFITI_FAILURE = '@@graffities/GRAFFITI_FAILURE',
+  ADMIN_GRAFFITIES_REQUEST = '@@graffities/ADMIN_GRAFFITIES_REQUEST',
+  ADMIN_GRAFFITIES_SUCCESS = '@@graffities/ADMIN_GRAFFITIES_SUCCESS',
+  ADMIN_GRAFFITIES_FAILURE = '@@graffities/ADMIN_GRAFFITIES_FAILURE',
 }
 
 export interface GraffitiesState {
@@ -20,6 +23,7 @@ export interface GraffitiesState {
   myGraffities: Graffiti[]
   createGraffiti: CreateGraffitiState
   graffiti: GraffitiWithPhotos
+  adminGraffities: Graffiti[]
 }
 
 export interface Graffiti {

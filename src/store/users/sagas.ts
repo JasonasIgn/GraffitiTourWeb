@@ -29,6 +29,8 @@ export function* logoutRequest() {
   }
 }
 
+
+
 export function* registerRequest(data) {
   try {
     yield call(api, config.apiMethods.POST, 'users', data)
@@ -44,6 +46,23 @@ export function* watchLogoutRequest() {
   yield call(logoutRequest)
 }
 
+export function* adminUsersRequest(setState) {
+  try {
+    const payload = yield call(api, config.apiMethods.GET, 'users')
+    console.log(payload)
+    setState(payload)
+    yield put(actions.adminUsersRequestSuccess(payload))
+  } catch (e) {
+    const error = yield e
+    yield put(actions.adminUsersRequestFailure(error))
+  }
+}
+
+export function* watchAdminUsersRequest() {
+  const { setState } = yield take(UserActionTypes.ADMIN_USERS_REQUEST)
+  yield call(adminUsersRequest, setState)
+}
+
 export function* watchProfileRequest() {
   yield call(profileRequest)
 }
@@ -57,4 +76,5 @@ export default function*() {
   yield takeEvery(UserActionTypes.PROFILE_REQUEST, watchProfileRequest)
   yield takeEvery(UserActionTypes.LOGOUT_REQUEST, watchLogoutRequest)
   yield takeEvery(UserActionTypes.REGISTER_REQUEST, watchRegisterRequest)
+  yield takeEvery(UserActionTypes.ADMIN_USERS_REQUEST, watchAdminUsersRequest)
 }
