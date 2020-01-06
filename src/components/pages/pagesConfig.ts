@@ -19,4 +19,12 @@ export const pages = {
     path: '/my-graffities',
     title: 'My Graffities',
   },
+  createGraffiti: {
+    path: '/create-graffiti',
+    title: 'Create Graffiti',
+  },
+  graffiti: {
+    path: '/graffiti',
+    title: 'View graffiti',
+  },
 }

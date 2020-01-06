@@ -49,8 +49,8 @@ export function* watchProfileRequest() {
 }
 
 export function* watchRegisterRequest() {
-const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
-yield call(registerRequest, data)
+  const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
+  yield call(registerRequest, data)
 }
 
 export default function*() {

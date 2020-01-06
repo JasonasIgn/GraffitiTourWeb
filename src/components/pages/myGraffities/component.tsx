@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from '../..'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
+import { pages } from '../pagesConfig'
 
 const rowStructure = graffiti => ({
   rowContents: [
@@ -11,11 +12,11 @@ const rowStructure = graffiti => ({
     },
     {
       title: 'Longtitude',
-      content: graffiti && graffiti.longtitude,
+      content: graffiti && graffiti.lng,
     },
     {
       title: 'Latitude',
-      content: graffiti && graffiti.latitude,
+      content: graffiti && graffiti.lat,
     },
     {
       title: 'Created at',
@@ -30,7 +31,7 @@ export const MyGraffitiesPageComponent = ({ graffities = [] }) => (
       <h1>My graffities</h1>
     </div>
     <div className="create-button-container">
-      <Button>Create</Button>
+      <Button to={pages.createGraffiti.path}>Create</Button>
     </div>
     <div className="tableWrapper">
       <Table

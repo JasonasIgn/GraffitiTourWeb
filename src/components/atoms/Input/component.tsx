@@ -14,7 +14,11 @@ export const Input = ({
   return (
     <Flex position="relative" direction="column">
       <label>{label}</label>
-      <input {...field} {...props} type={type} title={label}/>
+      {type === 'textarea' ? (
+        <textarea {...field} {...props} title={label} />
+      ) : (
+        <input {...field} {...props} type={type} title={label} />
+      )}
       {/* {React.createElement(type === 'textarea' ? 'textarea' : 'input', {
         ...field,
         ...props,
@@ -23,12 +27,13 @@ export const Input = ({
       })} */}
       <style jsx>
         {`
-          input {
+          input, textarea {
             resize: none;
             width: 100%;
             outline: none;
             box-sizing: border-box;
             height: ${type === 'textarea' ? 'auto' : '40px'};
+            min-height: ${type === 'textarea' ? '84px' : 'auto'};
             background-color: ${color('grey', 200)};
             color: black;
             padding-left: 10px;
