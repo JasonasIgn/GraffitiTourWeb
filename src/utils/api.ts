@@ -17,7 +17,7 @@ export async function api(method, path, data = null, fileUpload = false) {
       ...(!fileUpload && { 'Content-Type': 'application/json' }),
       ...authHeader(),
     },
-    body: data && fileUpload ? data : JSON.stringify(data),
+    ...(data && { body: data && fileUpload ? data : JSON.stringify(data) }),
   })
   if (res.ok) {
     return res.json()
