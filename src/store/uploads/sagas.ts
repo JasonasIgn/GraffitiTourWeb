@@ -32,10 +32,8 @@ export function* uploadRequest(
   }
 }
 
-export function* watchUploadRequest() {
-  const { data, setUploadList, setThumbnail, thumbnail } = yield take(
-    UploadActionTypes.UPLOAD_REQUEST,
-  )
+export function* watchUploadRequest(props) {
+  const { data, setUploadList, setThumbnail, thumbnail } = props
   yield call(uploadRequest, data, setUploadList, setThumbnail, thumbnail)
 }
 

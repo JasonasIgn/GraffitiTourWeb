@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Router from 'next/router'
 import { AdminPanelPageComponent } from '.'
@@ -14,10 +14,6 @@ interface PropsFromDispatch {}
 
 interface PropsFromState {
   profile: ProfileData
-}
-
-interface test {
-  getInitialProps: any
 }
 
 type AllProps = PropsFromDispatch & PropsFromState

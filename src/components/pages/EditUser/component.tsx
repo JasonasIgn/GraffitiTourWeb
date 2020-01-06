@@ -2,6 +2,7 @@ import React from 'react'
 import { color } from '../../../theme'
 import { Button } from '../../atoms'
 import { AdminUser } from '../../../store/users/types'
+import { EditUserForm } from '../../organisms/EditUserForm'
 
 interface Props {
   user: AdminUser
@@ -15,6 +16,7 @@ export const EditUserPageComponent: React.FunctionComponent<Props> = ({
   return (
     <div className="pageWrapper">
       <h1>Edit user</h1>
+      <EditUserForm user={user} />
       <style jsx>
         {`
           .ratingsWrapper {

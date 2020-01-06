@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import { put, call, takeEvery, take } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import * as actions from './actions'
 import { api } from '../../utils/api'
 import config from '../../config'
@@ -65,14 +65,14 @@ export function* watchMyGraffitiesRequest() {
   yield call(myGraffitiesRequest)
 }
 
-export function* watchAdminGraffitiesRequest() {
-  const { setState } = yield take(GraffitiActionTypes.ADMIN_GRAFFITIES_REQUEST)
+export function* watchAdminGraffitiesRequest(props) {
+  const { setState } = props
   yield call(adminGraffitiesRequest, setState)
 }
 
 
-export function* watchGraffitiRequest() {
-  const { id } = yield take(GraffitiActionTypes.GRAFFITI_REQUEST)
+export function* watchGraffitiRequest(props) {
+  const { id } = props
   yield call(graffitiRequest, id)
 }
 
@@ -81,8 +81,8 @@ export function* watchGraffitiesRequest() {
   yield call(graffitiesRequest)
 }
 
-export function* watchCreateGraffitiRequest() {
-  const { data } = yield take(GraffitiActionTypes.CREATE_GRAFFITI_REQUEST)
+export function* watchCreateGraffitiRequest(props) {
+  const { data } = props
   yield call(createGraffitiRequest, data)
 }
 
