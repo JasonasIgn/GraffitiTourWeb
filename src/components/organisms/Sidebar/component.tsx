@@ -5,15 +5,18 @@ import { Button, Link, Image } from '../..'
 import { pages } from '../../pages'
 import config from '../../../config'
 
-const menuPages = [pages.register, pages.login]
-const menuPagesLoggedIn = [pages.myGraffities]
-
 export const Sidebar = ({
   opened,
   profile,
   logoutRequest,
   setSidebarOpened,
 }) => {
+  const menuPages = [pages.register, pages.login]
+  const menuPagesLoggedIn = [pages.myGraffities]
+  profile.roles &&
+    profile.roles.find(role => role.title === config.roles.ROLE_ADMIN.role) &&
+    menuPagesLoggedIn.unshift(pages.adminPanel)
+
   return (
     <nav className={`sidebar-wrapper ${opened ? 'opened' : ''}`}>
       <div className="sidebar-content">

@@ -27,4 +27,8 @@ export const pages = {
     path: '/graffiti',
     title: 'View graffiti',
   },
+  adminPanel: {
+    path: '/admin',
+    title: 'Admin panel',
+  },
 }

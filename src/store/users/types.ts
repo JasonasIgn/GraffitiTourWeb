@@ -23,7 +23,7 @@ export interface RegisterData {
   password: string
 }
 
-interface Role {
+export interface Role {
   title: string
 }
 

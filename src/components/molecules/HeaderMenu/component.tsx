@@ -4,9 +4,11 @@ import { Link, DropDown } from '../..'
 import NextJSLink from 'next/link'
 import { pages } from '../../pages'
 import { Sidebar } from '../../organisms/Sidebar'
+import config from '../../../config'
 
 const menuPages = [pages.register, pages.login]
 const menuPagesLoggedIn = [pages.myGraffities]
+const adminPages = [pages.adminPanel]
 
 export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
   const [sidebarOpened, setSidebarOpened] = useState(false)
@@ -32,14 +34,28 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
               <span className="username-text">Welcome, {profile.username}</span>
             }>
             <div className="dropDownItemsContentWrapper">
+              {profile.roles &&
+                profile.roles.find(
+                  role => role.title === config.roles.ROLE_ADMIN.role,
+                ) &&
+                adminPages.map(item => (
+                  <NextJSLink href={item.path} key={item.title}>
+                    <div className="dropDownItem">
+                      <span className="logoutText">{item.title}</span>
+                    </div>
+                  </NextJSLink>
+                ))}
               {menuPagesLoggedIn.map(item => (
-                <NextJSLink href={item.path}>
+                <NextJSLink href={item.path} key={item.title}>
                   <div className="dropDownItem">
                     <span className="logoutText">{item.title}</span>
                   </div>
                 </NextJSLink>
               ))}
-              <div className="dropDownItem" onClick={() => logoutRequest()}>
+              <div
+                className="dropDownItem"
+                key={'logout'}
+                onClick={() => logoutRequest()}>
                 <span className="logoutText">Log out</span>
               </div>
             </div>
