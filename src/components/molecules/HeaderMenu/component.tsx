@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { color, media } from '../../../theme'
 import { Link, DropDown } from '../..'
+import NextJSLink from 'next/link'
 import { pages } from '../../pages'
 import { Sidebar } from '../../organisms/Sidebar'
+import config from '../../../config'
 
 const menuPages = [pages.register, pages.login]
+const menuPagesLoggedIn = [pages.myGraffities]
+const adminPages = [pages.adminPanel]
 
 export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
   const [sidebarOpened, setSidebarOpened] = useState(false)
@@ -30,9 +34,30 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
               <span className="username-text">Welcome, {profile.username}</span>
             }>
             <div className="dropDownItemsContentWrapper">
-              <span className="dropDownItem" onClick={() => logoutRequest()}>
+              {profile.roles &&
+                profile.roles.find(
+                  role => role.title === config.roles.ROLE_ADMIN.role,
+                ) &&
+                adminPages.map(item => (
+                  <NextJSLink href={item.path} key={item.title}>
+                    <div className="dropDownItem">
+                      <span className="logoutText">{item.title}</span>
+                    </div>
+                  </NextJSLink>
+                ))}
+              {menuPagesLoggedIn.map(item => (
+                <NextJSLink href={item.path} key={item.title}>
+                  <div className="dropDownItem">
+                    <span className="logoutText">{item.title}</span>
+                  </div>
+                </NextJSLink>
+              ))}
+              <div
+                className="dropDownItem"
+                key={'logout'}
+                onClick={() => logoutRequest()}>
                 <span className="logoutText">Log out</span>
-              </span>
+              </div>
             </div>
           </DropDown>
         ) : (
@@ -51,8 +76,9 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
             margin-left: 25;
             font-size: 14px;
           }
-          logoutText {
-            color: ${color('grey', 700)};
+          .logoutText {
+            font-weight: 800;
+            color: ${color('grey', 500)};
           }
           span {
             color: ${color('grey', 200)};
@@ -60,22 +86,28 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           .dropDownItemsContentWrapper {
             display: flex;
             justify-content: center;
-            height: 40px;
+            flex-direction: column;
             align-items: center;
             border: 1px solid ${color('light', 200)};
             box-shadow: 0px 4px 12px 0px ${color('blue', 800, 0.32)};
             background-color: ${color('white')};
           }
-          .dropdownitem: {
+          .dropDownItem {
             display: flex;
             font-weight: 400;
+            width: 100%;
             text-transform: none;
-            text-align: left;
+            box-sizing: border-box;
+            justify-content: center;
+            text-align: center;
             background-color: ${color('white')};
             whitespace: nowrap;
-            padding: 20px;
+            padding: 10px;
             font-size: 14px;
             cursor: pointer;
+          }
+          .dropDownItem:hover {
+            background-color: ${color('light', 100)};
           }
           .userMenu {
             display: flex;
@@ -129,7 +161,6 @@ export const HeaderMenuComponent = ({ profile, logoutRequest }) => {
           .menu-btn:after {
             ${sidebarOpened && `transform: translateY(-10px) rotate(-45deg);`}
           }
-          
         `}
       </style>
       <style jsx global>

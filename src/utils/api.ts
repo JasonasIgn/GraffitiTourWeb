@@ -10,14 +10,14 @@ export function authHeader() {
   }
 }
 
-export async function api(method, path, data = null) {
+export async function api(method, path, data = null, fileUpload = false) {
   const res = await fetch(`${config.apiUrl}/${path}`, {
     method,
     headers: {
-      'Content-Type': 'application/json',
+      ...(!fileUpload && { 'Content-Type': 'application/json' }),
       ...authHeader(),
     },
-    body: data && JSON.stringify(data),
+    ...(data && { body: data && fileUpload ? data : JSON.stringify(data) }),
   })
   if (res.ok) {
     return res.json()

@@ -3,8 +3,7 @@ import { images } from '../../../utils'
 import { color, media } from '../../../theme'
 import { Button, Link, Image } from '../..'
 import { pages } from '../../pages'
-
-const menuPages = [pages.register, pages.login]
+import config from '../../../config'
 
 export const Sidebar = ({
   opened,
@@ -12,6 +11,12 @@ export const Sidebar = ({
   logoutRequest,
   setSidebarOpened,
 }) => {
+  const menuPages = [pages.register, pages.login]
+  const menuPagesLoggedIn = [pages.myGraffities]
+  profile.roles &&
+    profile.roles.find(role => role.title === config.roles.ROLE_ADMIN.role) &&
+    menuPagesLoggedIn.unshift(pages.adminPanel)
+
   return (
     <nav className={`sidebar-wrapper ${opened ? 'opened' : ''}`}>
       <div className="sidebar-content">
@@ -28,7 +33,12 @@ export const Sidebar = ({
                 <span className="user-email">
                   <span>{profile.email}</span>
                 </span>
-                <span className="user-role">Administrator</span>
+                <span className="user-role">
+                  {
+                    config.roles[profile.roles[profile.roles.length - 1].title]
+                      .name
+                  }
+                </span>
               </div>
             </div>
             <hr />
@@ -36,18 +46,29 @@ export const Sidebar = ({
         )}
         <div className="sidebar-menu">
           <div className="higher-container">
-            {!profile.username &&
-              menuPages.map((page, index) => (
-                <Link key={page.path} href={page.path}>
-                  <Button
-                    style={index > 0 ? { borderTop: 'none' } : {}}
-                    borderRadius="0px"
-                    onClick={() => setSidebarOpened(false)}
-                    width="100%">
-                    {page.title}
-                  </Button>
-                </Link>
-              ))}
+            {!profile.username
+              ? menuPages.map((page, index) => (
+                  <Link key={page.path} href={page.path}>
+                    <Button
+                      style={index > 0 ? { borderTop: 'none' } : {}}
+                      borderRadius="0px"
+                      onClick={() => setSidebarOpened(false)}
+                      width="100%">
+                      {page.title}
+                    </Button>
+                  </Link>
+                ))
+              : menuPagesLoggedIn.map((page, index) => (
+                  <Link key={page.path} href={page.path}>
+                    <Button
+                      style={index > 0 ? { borderTop: 'none' } : {}}
+                      borderRadius="0px"
+                      onClick={() => setSidebarOpened(false)}
+                      width="100%">
+                      {page.title}
+                    </Button>
+                  </Link>
+                ))}
           </div>
           {profile.username && (
             <div className="lower-container">

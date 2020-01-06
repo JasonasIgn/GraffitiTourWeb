@@ -29,6 +29,16 @@ export function* logoutRequest() {
   }
 }
 
+export function* adminUserRequest(id) {
+  try {
+    const payload = yield call(api, config.apiMethods.GET, `users/${id}`)
+    yield put(actions.adminUserRequestSuccess(payload))
+  } catch (e) {
+    const errors = yield e
+    yield put(actions.adminUserRequestFailure(errors))
+  }
+}
+
 export function* registerRequest(data) {
   try {
     yield call(api, config.apiMethods.POST, 'users', data)
@@ -40,8 +50,29 @@ export function* registerRequest(data) {
   }
 }
 
+export function* watchAdminUserRequest() {
+  const { id } = yield take(UserActionTypes.ADMIN_USER_REQUEST)
+  yield call(adminUserRequest, id)
+}
+
 export function* watchLogoutRequest() {
   yield call(logoutRequest)
+}
+
+export function* adminUsersRequest(setState) {
+  try {
+    const payload = yield call(api, config.apiMethods.GET, 'users')
+    setState(payload)
+    yield put(actions.adminUsersRequestSuccess(payload))
+  } catch (e) {
+    const error = yield e
+    yield put(actions.adminUsersRequestFailure(error))
+  }
+}
+
+export function* watchAdminUsersRequest() {
+  const { setState } = yield take(UserActionTypes.ADMIN_USERS_REQUEST)
+  yield call(adminUsersRequest, setState)
 }
 
 export function* watchProfileRequest() {
@@ -49,12 +80,14 @@ export function* watchProfileRequest() {
 }
 
 export function* watchRegisterRequest() {
-const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
-yield call(registerRequest, data)
+  const { data } = yield take(UserActionTypes.REGISTER_REQUEST)
+  yield call(registerRequest, data)
 }
 
 export default function*() {
   yield takeEvery(UserActionTypes.PROFILE_REQUEST, watchProfileRequest)
   yield takeEvery(UserActionTypes.LOGOUT_REQUEST, watchLogoutRequest)
   yield takeEvery(UserActionTypes.REGISTER_REQUEST, watchRegisterRequest)
+  yield takeEvery(UserActionTypes.ADMIN_USERS_REQUEST, watchAdminUsersRequest)
+  yield takeEvery(UserActionTypes.ADMIN_USER_REQUEST, watchAdminUserRequest)
 }

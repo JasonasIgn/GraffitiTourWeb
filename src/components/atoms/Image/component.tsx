@@ -15,7 +15,6 @@ export const Image = ({
   return (
     <React.Fragment>
       <img alt={alt} height={height} width={width} src={src} {...props} />
-
       <style jsx>{`
         img {
           box-sizing: content-box;
