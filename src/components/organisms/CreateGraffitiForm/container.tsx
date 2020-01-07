@@ -17,8 +17,8 @@ interface PropsFromState {
 type AllProps = PropsFromState & PropsFromDispatch
 
 const initialValues = {
-  name: 'testas',
-  description: 'descirption',
+  name: '',
+  description: '',
   position: {},
   uploads: [],
   thumbnail: null,
