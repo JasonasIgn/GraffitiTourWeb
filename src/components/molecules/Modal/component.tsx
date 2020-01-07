@@ -42,7 +42,7 @@ export const ModalContent: React.FunctionComponent<ModalContentProps> = ({
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background-color: ${color('light', 300)};
+            background-color: ${color('light', 200)};
             border: none;
             outline: none;
             cursor: pointer;
