@@ -19,7 +19,7 @@ type AllProps = PropsFromState & PropsFromDispatch
 const initialValues = {
   name: '',
   description: '',
-  position: {},
+  position: null,
   uploads: [],
   thumbnail: null,
 }

@@ -17,7 +17,7 @@ export class GoogleMaps extends React.Component<any, any> {
     super(props)
     this.state = {
       showingInfoWindow: false,
-      position: {},
+      position: null,
       selectedGraffiti: {},
     }
   }
