@@ -47,7 +47,7 @@ export const EditGraffitiPageComponent: React.FunctionComponent<Props> = ({
             height: max-content;
           }
           .rightContent {
-            margin-left: 10px;
+            margin-left: 45px;
           }
           .pageWrapper {
             max-width: 540px;
