@@ -38,6 +38,7 @@ const rowStructure = rating => ({
       title: 'Rating',
       content: rating && (
         <StarRating
+          name="starRating"
           starCount={5}
           value={rating.rating}
           emptyStarColor={color('light', 300)}
