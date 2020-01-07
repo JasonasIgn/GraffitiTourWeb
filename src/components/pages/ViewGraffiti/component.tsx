@@ -62,7 +62,7 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
             value={graffiti.totalRating / graffiti.totalRated}
             emptyStarColor={color('light', 300)}
           />
-          <div>{`(${graffiti.totalRating / graffiti.totalRated}/5)`}</div>
+          <div>{`(${graffiti.totalRating / graffiti.totalRated || 0}/5)`}</div>
         </div>
 
         <div className="upperContent">
@@ -134,7 +134,7 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
             <Table
               data={graffiti.latestRatings}
               rowStructure={rowStructure}
-              notFoundText="You don't have any graffities"
+              notFoundText="No one rated this graffiti yet"
             />
           </div>
         </div>
@@ -196,7 +196,7 @@ export const ViewGraffitiPageComponent: React.FunctionComponent<Props> = ({
             }
             .googleMapsWrapper {
               width: 100%;
-              height: 400px;
+              height: 500px;
               margin-top: 30px;
             }
           `}

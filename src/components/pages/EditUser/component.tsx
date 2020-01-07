@@ -51,11 +51,13 @@ export const EditUserPageComponent: React.FunctionComponent<Props> = ({
             margin-left: 10px;
           }
           .pageWrapper {
+            max-width: 340px;
+            height: max-content;
             position: relative;
             display: flex;
             flex-direction: column;
             padding: 30px;
-            margin: 50px;
+            margin: auto 50px;
             width: 100%;
             background-image: linear-gradient(
               to bottom right,

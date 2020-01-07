@@ -16,7 +16,7 @@ export const GoogleMapsField = ({
   form,
   ...props
 }) => {
-  const [marker, setMarker] = useState(null)
+  const [marker, setMarker] = useState(field.value || null)
 
   const onMapClick = ({ latLng }) => {
     const { setFieldValue } = form

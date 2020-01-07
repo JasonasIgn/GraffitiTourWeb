@@ -17,7 +17,7 @@ export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
       <h1>Login</h1>
       <Form className="login-form">
         <FormField name="email" label="Email" />
-        <FormField name="password" label="Password" />
+        <FormField name="password" type="password" label="Password" />
         <div className="button-wrapper">
           <Button type="submit"> Login </Button>
         </div>

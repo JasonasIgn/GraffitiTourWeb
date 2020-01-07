@@ -35,4 +35,8 @@ export const pages = {
     path: '/admin/edit-user',
     title: 'Edit user',
   },
+  editGraffiti: {
+    path: '/admin/edit-graffiti',
+    title: 'Edit graffiti',
+  },
 }

@@ -9,7 +9,7 @@ export const Header = () => (
   <header>
     <div className="header-content">
       <Link href={pages.homepage.path} className="header-logo">
-        <Image src={images.logo} height="40px" alt="logo" />
+        <Image src={images.logoSmall} height="40px" alt="logo" />
       </Link>
       <Flex>
         <HeaderMenu />

@@ -1,5 +1,6 @@
 export const images = {
-  logo: 'test_logo.png',
+  logo: 'logo.png',
+  logoSmall: 'logo_small.png',
   user: 'user.jpg',
   checkbox: 'checkbox.svg',
   close: 'close.svg',
