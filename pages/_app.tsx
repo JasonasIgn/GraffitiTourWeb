@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper'
 import configureStore from '../src/store/configureStore'
 import { Layout } from '../src/components'
 import { Store } from 'redux'
+import Head from 'next/head'
 
 interface MyAppProps {
   store: Store
@@ -31,12 +32,18 @@ class MyApp extends App<MyAppProps, {}, {}> {
   render() {
     const { Component, pageProps, store } = this.props
     return (
-      <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        <style jsx global>
-          {`
+      <>
+        <Head>
+          <title>GraffitiTour</title>
+        </Head>
+        <Provider store={store}>
+
+          <Layout>
+
+            <Component {...pageProps} />
+          </Layout>
+          <style jsx global>
+            {`
             @font-face {
               font-family: 'Overpass';
               src: url('/static/fonts/Overpass-Regular.ttf') format('truetype');
@@ -46,8 +53,9 @@ class MyApp extends App<MyAppProps, {}, {}> {
               font-family: 'Overpass', sans-serif;
             }
           `}
-        </style>
-      </Provider>
+          </style>
+        </Provider>
+      </>
     )
   }
 }
